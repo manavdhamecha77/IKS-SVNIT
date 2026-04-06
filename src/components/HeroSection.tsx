@@ -14,9 +14,7 @@ const tabs = [
   { id: "objectives", label: "Objectives" },
   { id: "vision", label: "Vision" },
   { id: "mission", label: "Mission" },
-  { id: "courses", label: "Courses" },
   { id: "phd", label: "Ph.D. Programme" },
-  { id: "gallery", label: "Gallery" },
   { id: "advisors", label: "Advisors" },
 ];
 

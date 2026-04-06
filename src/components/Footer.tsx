@@ -5,9 +5,7 @@ const footerLinks = [
   { id: "objectives", label: "Objectives" },
   { id: "vision", label: "Vision" },
   { id: "mission", label: "Mission" },
-  { id: "courses", label: "Courses" },
   { id: "phd", label: "Ph.D. Programme" },
-  { id: "gallery", label: "Gallery" },
   { id: "advisors", label: "Advisors" },
 ];
 
@@ -20,7 +18,7 @@ export default function Footer() {
       <div className="absolute -top-24 left-1/2 -translateX-1/2 w-[1000px] h-[500px] bg-blue-500/5 rounded-[100%] blur-[120px] pointer-events-none" />
 
       {/* 1. Logo & Branding */}
-      <div className="mb-12 flex flex-col items-center">
+      <div className="mb-8 flex flex-col items-center">
         <div className="relative w-20 h-20 md:w-28 md:h-28 mb-8 hover:scale-110 transition-transform duration-500 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <div className="absolute inset-0 bg-white rounded-full blur-2xl opacity-10" />
           <Image
@@ -34,13 +32,13 @@ export default function Footer() {
         <h2 className="text-white text-xl md:text-3xl font-black tracking-tight mb-4 max-w-4xl leading-tight">
           भारतीय ज्ञान परंपरा एवं समग्र शिक्षा केन्द्र
         </h2>
-        <p className="text-blue-200/60 font-bold text-sm md:text-lg tracking-widest uppercase mb-12">
+        <p className="text-blue-200/60 font-bold text-sm md:text-lg tracking-widest uppercase mb-8">
           Centre for Indian Knowledge Systems & Holistic Education
         </p>
       </div>
 
       {/* 2. Divider */}
-      <div className="w-16 h-px bg-white/10 mb-12" />
+      <div className="w-16 h-px bg-white/10 mb-8" />
 
       {/* 3. Navigation Links */}
       <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 mb-20 max-w-5xl">
