@@ -37,9 +37,6 @@ export default function Footer() {
         </p>
       </div>
 
-      {/* 2. Divider */}
-      <div className="w-16 h-px bg-white/10 mb-8" />
-
       {/* 3. Navigation Links */}
       <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 mb-20 max-w-5xl">
         {footerLinks.map((link) => (
@@ -48,7 +45,7 @@ export default function Footer() {
             onClick={() => {
               document.getElementById(link.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
             }}
-            className="text-xs font-bold text-white/40 hover:text-amber-400 border-b border-transparent hover:border-amber-400/50 transition-all uppercase tracking-[0.2em]"
+            className="text-xs font-bold text-white/40 hover:text-amber-400 border-b border-transparent hover:border-amber-400/50 transition-all tracking-[0.2em]"
           >
             {link.label}
           </button>
@@ -57,13 +54,18 @@ export default function Footer() {
 
       {/* 4. Bottom Legal / Copyright Area */}
       <div className="w-full max-w-7xl pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 px-10">
-        <p className="text-white/20 text-[10px] md:text-xs font-medium tracking-widest uppercase">
-          &copy; {new Date().getFullYear()} CENTRE FOR IKS, SVNIT SURAT.
+        <p className="text-white/20 text-[10px] md:text-xs font-medium tracking-widest">
+          &copy; {new Date().getFullYear()} Center For IKSHE, SVNIT, Surat.
         </p>
         <div className="flex gap-8">
-          <p className="text-white/20 text-[10px] md:text-xs font-medium tracking-widest uppercase hover:text-white/40 cursor-pointer transition-colors">Privacy Policy</p>
-          <p className="text-white/20 text-[10px] md:text-xs font-medium tracking-widest uppercase hover:text-white/40 cursor-pointer transition-colors">SVNIT Official</p>
-          <p className="text-white/20 text-[10px] md:text-xs font-medium tracking-widest uppercase hover:text-white/40 cursor-pointer transition-colors">Contact Us</p>
+          <a 
+            href="https://svnit.ac.in" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-white/20 text-[10px] md:text-xs font-medium tracking-widest uppercase hover:text-white/40 cursor-pointer transition-colors"
+          >
+            SVNIT Official
+          </a>
         </div>
       </div>
 

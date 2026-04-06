@@ -132,7 +132,6 @@ export default function TabsSection() {
 
   const SectionTitle = ({ children, gradient, subtitle }: { children: React.ReactNode, gradient: string, subtitle?: string }) => (
     <div className="mb-12 relative">
-      <div className={`w-20 h-1.5 rounded-full ${gradient.replace('from-', 'bg-').split(' ')[0]} mb-4`} />
       <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-none mb-2">
         {children}
       </h2>
@@ -146,7 +145,7 @@ export default function TabsSection() {
 
         {/* ─── Objectives ─── */}
         <div id="objectives" className="mb-32 scroll-mt-32">
-          <SectionTitle gradient="from-blue-600 to-indigo-600" subtitle="Our Core Goals">Objectives</SectionTitle>
+          <SectionTitle gradient="from-blue-600 to-indigo-600">Objectives</SectionTitle>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               "Technical hub for Ph.D. research in ancient indigenous knowledge and ancient wisdom.",
@@ -167,10 +166,13 @@ export default function TabsSection() {
         {/* ─── Vision & Mission ─── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-32">
           <div id="vision" className="scroll-mt-32 p-10 bg-white rounded-[3rem] border-2 border-blue-50 shadow-xl relative overflow-hidden flex flex-col justify-center group">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700" />
             <SectionTitle gradient="from-blue-600 to-blue-400">Vision</SectionTitle>
             <p className="text-xl md:text-2xl font-semibold text-slate-800 leading-relaxed relative z-10">
-              Establishing SVNIT Surat as a global frontier leader in disseminating <span className="text-blue-600 font-black">Indian Knowledge Systems</span> for Holistic Education, rooted in the philosophy of <span className="italic leading-loose">‘Vasudhaiv Kutumbakam’</span>.
+              Establishing SVNIT Surat as a global frontier leader in disseminating{" "}
+              <span className="text-blue-600 font-black">Indian Knowledge Systems</span> for Holistic Education, rooted in the philosophy of{" "}
+              <span className="font-kurale italic text-slate-900 drop-shadow-none">
+                ‘Vasudhaiva Kutumbakam’
+              </span>.
             </p>
           </div>
 
@@ -216,39 +218,23 @@ export default function TabsSection() {
 
         {/* ─── Ph.D. Programme ─── */}
         <div id="phd" className="mb-32 scroll-mt-32">
-          <div className="flex flex-col md:flex-row items-end justify-between mb-16 px-6">
-            <SectionTitle gradient="from-blue-700 to-amber-500" subtitle="Research Hub">Ph.D. Programme</SectionTitle>
-            <p className="text-slate-400 font-bold uppercase tracking-widest text-xs mb-12">Academic Excellence</p>
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 px-4 md:px-6">
+            <SectionTitle gradient="from-blue-700 to-amber-500">Ph.D. Programme</SectionTitle>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             {phdAreas.map((area, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="group relative flex flex-col bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-600/30 transition-all duration-500 overflow-hidden"
               >
-                {/* 1. Subtle Accent Header */}
-                <div className={`h-2 w-full ${area.color} opacity-80`} />
-                
                 {/* 2. Card Body */}
-                <div className="flex-1 p-4 md:p-4 flex flex-col relative z-10">
-                  {/* Research Area Image Replacement for Icon */}
-                  <div className="w-full aspect-video rounded-xl overflow-hidden mb-5 border border-slate-100 group-hover:shadow-lg transition-all duration-500 relative">
-                    <Image 
-                      src={`/images/image${18 + (i % 23)}.png`} 
-                      alt={area.title} 
-                      fill 
-                      className="object-cover group-hover:scale-110 transition-transform duration-1000" 
-                    />
-                    <div className={`absolute inset-0 ${area.color} opacity-10`} />
-                  </div>
-                  
+                <div className="flex-1 p-10 flex flex-col relative z-10">
                   {/* Research Area Title */}
                   <div className="flex-1">
-                    <h4 className="text-xl font-bold text-slate-900 leading-snug tracking-tight mb-4 group-hover:text-blue-700 transition-colors">
+                    <h4 className="text-xl font-bold text-slate-900 leading-snug tracking-tight group-hover:text-blue-700 transition-colors">
                       {area.title}
                     </h4>
-                    <div className="w-8 h-1 bg-slate-200 rounded-full group-hover:w-16 group-hover:bg-blue-600 transition-all duration-500" />
                   </div>
                 </div>
               </div>
@@ -285,7 +271,7 @@ export default function TabsSection() {
 
         {/* ─── Advisors ─── */}
         <div id="advisors" className="scroll-mt-32">
-          <SectionTitle gradient="from-amber-500 to-orange-500" subtitle="Academic Council">Advisors</SectionTitle>
+          <SectionTitle gradient="from-amber-500 to-orange-500">Advisors</SectionTitle>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <div key={i} className="flex flex-col items-center group">
