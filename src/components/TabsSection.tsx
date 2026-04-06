@@ -65,11 +65,20 @@ const phdAreas = [
     )
   },
   {
-    title: "Singularity and Artificial Intelligence",
+    title: "Singularity and Artificial Intelligence: Evolutionary Awakening",
     color: "from-slate-600 to-slate-800",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+      </svg>
+    )
+  },
+  {
+    title: "Intelligent Integration of Education and Science in Light of Madhyasth Darshan",
+    color: "from-cyan-500 to-blue-600",
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
       </svg>
     )
   },
@@ -174,7 +183,7 @@ export default function TabsSection() {
           </div>
         </div>
 
-        {/* ─── Courses ─── */}
+        {/* ─── Courses ───
         <div id="courses" className="mb-32 scroll-mt-32">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <div className="flex-1">
@@ -203,7 +212,7 @@ export default function TabsSection() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* ─── Ph.D. Programme ─── */}
         <div id="phd" className="mb-32 scroll-mt-32">
@@ -212,52 +221,56 @@ export default function TabsSection() {
             <p className="text-slate-400 font-bold uppercase tracking-widest text-xs mb-12">Academic Excellence</p>
           </div>
           
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12 items-stretch">
             {phdAreas.map((area, i) => (
               <div 
                 key={i} 
-                className="group relative aspect-[3/4.5] md:aspect-[3/4] bg-slate-100 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-lg md:shadow-xl hover:shadow-2xl transition-all duration-700 md:hover:-translate-y-4"
+                className="group relative flex flex-col bg-white rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-lg md:shadow-2xl hover:shadow-blue-500/10 transition-all duration-700 hover:-translate-y-2 border border-slate-100"
               >
-                {/* 1. Background Image Placeholder / Color Block */}
-                <Image 
-                  src={`/images/image${18 + (i % 23)}.png`} 
-                  alt={area.title} 
-                  fill 
-                  className="object-cover opacity-60 group-hover:opacity-80 transition-opacity" 
-                />
-                <div className={`absolute inset-0 bg-gradient-to-br ${area.color} opacity-40 group-hover:opacity-60 transition-opacity`} />
-                <div className="absolute inset-0 bg-slate-900/20 mix-blend-multiply" />
-                
-                {/* 2. Abstract Geometric Accents (Vertical-focused) */}
-                <div className="absolute top-0 right-0 w-24 h-full bg-white/10 skew-x-12 translate-x-12 group-hover:translate-x-0 transition-transform duration-1000" />
+                {/* 1. Dynamic Background Image with Depth */}
+                <div className="relative h-32 md:h-56 overflow-hidden">
+                  <Image 
+                    src={`/images/image${18 + (i % 23)}.png`} 
+                    alt={area.title} 
+                    fill 
+                    className="object-cover group-hover:scale-110 transition-transform duration-1000 brightness-90" 
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent`} />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${area.color} mix-blend-multiply opacity-20`} />
+                </div>
 
-                {/* 3. Card Content Overlay */}
-                <div className="absolute inset-0 p-4 md:p-10 flex flex-col justify-end text-white z-10 transition-transform duration-700 group-hover:scale-105">
-                  <div className="bg-white/10 backdrop-blur-md rounded-xl md:rounded-2xl p-2 md:p-3 w-fit mb-3 md:mb-6 border border-white/20 group-hover:bg-amber-400/20 transition-colors">
-                    <div className="scale-75 md:scale-100 origin-left">
-                      {area.icon}
-                    </div>
+                {/* 2. Content Section (Grows to Fill Space) */}
+                <div className="flex-1 p-5 md:p-10 flex flex-col">
+                  {/* Floating Icon */}
+                  <div className={`-mt-10 md:-mt-20 relative z-20 w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-gradient-to-br ${area.color} p-2.5 md:p-4 text-white shadow-xl shadow-blue-500/10 mb-4 md:mb-8 group-hover:rotate-6 transition-transform`}>
+                    {area.icon}
                   </div>
-                  <h4 className="text-sm md:text-2xl font-black leading-tight tracking-tight mb-2 md:mb-4 group-hover:text-amber-400 transition-colors line-clamp-3">
-                    {area.title}
-                  </h4>
-                  <div className="h-1 md:h-1.5 w-8 md:w-12 bg-white/30 rounded-full group-hover:w-full group-hover:bg-amber-400 transition-all duration-700" />
-                  <p className="hidden md:block text-[10px] font-black uppercase tracking-[0.3em] mt-6 opacity-0 group-hover:opacity-70 transition-opacity">
-                    Research Area
-                  </p>
+                  
+                  {/* Title Area */}
+                  <div className="flex-1">
+                    <h4 className="text-[14px] md:text-2xl font-black text-slate-900 leading-tight tracking-tight mb-4 group-hover:text-blue-600 transition-colors">
+                      {area.title}
+                    </h4>
+                  </div>
+                  
+                  {/* Footer Decoration */}
+                  <div className="mt-auto">
+                    <div className={`h-1.5 w-10 bg-gradient-to-r ${area.color} rounded-full group-hover:w-full transition-all duration-700`} />
+                    <p className="text-[9px] font-black uppercase tracking-[0.35em] text-slate-300 mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      Academic Excellence
+                    </p>
+                  </div>
                 </div>
 
-                {/* Background Pattern */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-5 md:opacity-10 pointer-events-none uppercase font-black text-4xl md:text-6xl break-all leading-none grayscale invert tracking-tighter">
-                  {area.title.slice(0,3)}
-                </div>
+                {/* Subtle Glow (Hover) */}
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-blue-500/10 rounded-[2rem] md:rounded-[3rem] pointer-events-none transition-all" />
               </div>
             ))}
           </div>
         </div>
 
         {/* ─── Gallery ─── */}
-        <div id="gallery" className="mb-32 scroll-mt-32">
+        {/* <div id="gallery" className="mb-32 scroll-mt-32">
           <div className="flex items-end justify-between mb-12">
             <SectionTitle gradient="from-rose-500 to-pink-500" subtitle="Moments & Memories">Gallery</SectionTitle>
             <div className="flex gap-4 mb-12">
@@ -281,7 +294,7 @@ export default function TabsSection() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* ─── Advisors ─── */}
         <div id="advisors" className="scroll-mt-32">
