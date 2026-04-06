@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
+import Image from "next/image";
 
-// You can fill this array with all 30+ image filenames
-const galleryImages = Array.from({ length: 32 }).map((_, i) => ({
-  src: null as string | null, // e.g., `/gallery/img-${i+1}.jpg`
+// Gallery images populated with all 41 images
+const galleryImages = Array.from({ length: 41 }).map((_, i) => ({
+  src: `/images/image${i + 1}.png`,
   alt: `Gallery Image ${i + 1}`
 }));
 
@@ -184,8 +185,22 @@ export default function TabsSection() {
               <button className="px-8 py-3 bg-blue-700 text-white font-black rounded-full hover:bg-blue-600 hover:scale-105 active:scale-95 transition-all shadow-lg shadow-blue-500/20">VIEW CATALOG</button>
             </div>
             <div className="flex-1 grid grid-cols-2 gap-4 w-full">
-              <div className="aspect-square bg-emerald-50 rounded-[2rem] border border-emerald-100 flex items-center justify-center text-emerald-300 animate-pulse">Photo 1</div>
-              <div className="aspect-square bg-teal-50 rounded-[2rem] border border-teal-100 flex items-center justify-center text-teal-300 animate-pulse delay-150">Photo 2</div>
+              <div className="aspect-square relative overflow-hidden rounded-[2rem] border border-emerald-100 shadow-xl group">
+                <Image 
+                  src="/images/image16.png" 
+                  alt="SVNIT Course Gallery 1" 
+                  fill 
+                  className="object-cover group-hover:scale-110 transition-transform duration-700" 
+                />
+              </div>
+              <div className="aspect-square relative overflow-hidden rounded-[2rem] border border-teal-100 shadow-xl group">
+                <Image 
+                  src="/images/image17.png" 
+                  alt="SVNIT Course Gallery 2" 
+                  fill 
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 delay-150" 
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -197,13 +212,19 @@ export default function TabsSection() {
             <p className="text-slate-400 font-bold uppercase tracking-widest text-xs mb-12">Academic Excellence</p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
             {phdAreas.map((area, i) => (
               <div 
                 key={i} 
-                className="group relative aspect-[3/4] bg-slate-100 rounded-[2.5rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4"
+                className="group relative aspect-[3/4.5] md:aspect-[3/4] bg-slate-100 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-lg md:shadow-xl hover:shadow-2xl transition-all duration-700 md:hover:-translate-y-4"
               >
                 {/* 1. Background Image Placeholder / Color Block */}
+                <Image 
+                  src={`/images/image${18 + (i % 23)}.png`} 
+                  alt={area.title} 
+                  fill 
+                  className="object-cover opacity-60 group-hover:opacity-80 transition-opacity" 
+                />
                 <div className={`absolute inset-0 bg-gradient-to-br ${area.color} opacity-40 group-hover:opacity-60 transition-opacity`} />
                 <div className="absolute inset-0 bg-slate-900/20 mix-blend-multiply" />
                 
@@ -211,21 +232,23 @@ export default function TabsSection() {
                 <div className="absolute top-0 right-0 w-24 h-full bg-white/10 skew-x-12 translate-x-12 group-hover:translate-x-0 transition-transform duration-1000" />
 
                 {/* 3. Card Content Overlay */}
-                <div className="absolute inset-0 p-10 flex flex-col justify-end text-white z-10 transition-transform duration-700 group-hover:scale-105">
-                  <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 w-fit mb-6 border border-white/20 group-hover:bg-amber-400/20 transition-colors">
-                    {area.icon}
+                <div className="absolute inset-0 p-4 md:p-10 flex flex-col justify-end text-white z-10 transition-transform duration-700 group-hover:scale-105">
+                  <div className="bg-white/10 backdrop-blur-md rounded-xl md:rounded-2xl p-2 md:p-3 w-fit mb-3 md:mb-6 border border-white/20 group-hover:bg-amber-400/20 transition-colors">
+                    <div className="scale-75 md:scale-100 origin-left">
+                      {area.icon}
+                    </div>
                   </div>
-                  <h4 className="text-2xl font-black leading-tight tracking-tight mb-4 group-hover:text-amber-400 transition-colors">
+                  <h4 className="text-sm md:text-2xl font-black leading-tight tracking-tight mb-2 md:mb-4 group-hover:text-amber-400 transition-colors line-clamp-3">
                     {area.title}
                   </h4>
-                  <div className="h-1.5 w-12 bg-white/30 rounded-full group-hover:w-full group-hover:bg-amber-400 transition-all duration-700" />
-                  <p className="text-[10px] font-black uppercase tracking-[0.3em] mt-6 opacity-0 group-hover:opacity-70 transition-opacity">
+                  <div className="h-1 md:h-1.5 w-8 md:w-12 bg-white/30 rounded-full group-hover:w-full group-hover:bg-amber-400 transition-all duration-700" />
+                  <p className="hidden md:block text-[10px] font-black uppercase tracking-[0.3em] mt-6 opacity-0 group-hover:opacity-70 transition-opacity">
                     Research Area
                   </p>
                 </div>
 
                 {/* Background Pattern */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none uppercase font-black text-6xl break-all leading-none grayscale invert tracking-tighter">
+                <div className="absolute inset-0 flex items-center justify-center opacity-5 md:opacity-10 pointer-events-none uppercase font-black text-4xl md:text-6xl break-all leading-none grayscale invert tracking-tighter">
                   {area.title.slice(0,3)}
                 </div>
               </div>
@@ -245,10 +268,15 @@ export default function TabsSection() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {galleryImages.slice(galleryPage * imagesPerPage, (galleryPage + 1) * imagesPerPage).map((img, i) => (
-              <div key={i} className="aspect-square bg-slate-50 rounded-3xl border border-slate-100 shadow-sm hover:shadow-2xl transition-all group overflow-hidden flex items-center justify-center">
-                <div className="flex flex-col items-center opacity-20">
-                  <span className="text-3xl">📷</span>
-                  <p className="text-[10px] font-black uppercase mt-2">PHOTO {galleryPage * imagesPerPage + i + 1}</p>
+              <div key={i} className="aspect-square relative bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-2xl transition-all group overflow-hidden">
+                <Image 
+                  src={img.src} 
+                  alt={img.alt} 
+                  fill 
+                  className="object-cover group-hover:scale-110 transition-transform duration-700" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                  <p className="text-white text-[10px] font-black uppercase tracking-widest">{img.alt}</p>
                 </div>
               </div>
             ))}

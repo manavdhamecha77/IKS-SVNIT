@@ -80,6 +80,12 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       </div>
 
       {/* Background Ambience */}
+      <Image 
+        src="/images/image1.png" 
+        alt="Loading Background" 
+        fill 
+        className="object-cover opacity-[0.03] pointer-events-none grayscale" 
+      />
       <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-600/5 rounded-full blur-[150px] pointer-events-none" />
     </div>
