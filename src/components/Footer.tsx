@@ -1,5 +1,5 @@
-// components/Footer.tsx
 "use client";
+import Image from "next/image";
 
 const footerLinks = [
   { id: "objectives", label: "Objectives" },
@@ -24,17 +24,21 @@ export default function Footer() {
         Centre for Indian Knowledge Systems and Holistic Education
       </h2>
 
-      {/* 3. Logo Placeholder (Smaller for Footer) */}
+      {/* 3. Logo (Smaller for Footer) */}
       <div className="mb-10">
-        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-green-500 flex items-center justify-center bg-green-50/20">
-          <span className="text-green-600 font-bold text-xs md:text-sm">Logo</span>
-        </div>
+        <Image
+          src="/logo/svnit.png"
+          alt="SVNIT Logo"
+          width={80}
+          height={80}
+          className="w-16 h-16 md:w-20 md:h-20 object-contain"
+        />
       </div>
 
-      {/* 4. SVNIT Surat Label */}
+      {/*
       <p className="text-gray-400 font-extrabold text-xs md:text-sm tracking-[0.3em] uppercase mb-12">
         SVNIT Surat
-      </p>
+      </p> */}
 
       {/* 5. Minimal Navigation (Quick Links) */}
       <div className="flex flex-wrap justify-center gap-6 mb-16">

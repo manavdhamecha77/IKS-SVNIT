@@ -1,6 +1,5 @@
-// components/HeroSection.tsx
 "use client";
-
+import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
 
 const photographs = [
@@ -80,44 +79,22 @@ export default function HeroSection() {
         Centre for Indian Knowledge Systems and Holistic Education welcomes you.
       </h2>
 
-      {/* 3. Logo Placeholder */}
+      {/* 3. Logo */}
       <div className="mb-10 animate-fade-in stagger-2">
-        <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-green-500 flex items-center justify-center bg-green-50/30">
-          <span className="text-green-600 font-bold text-lg md:text-xl">Logo</span>
-        </div>
+        <Image
+          src="/logo/svnit.png"
+          alt="SVNIT Logo"
+          width={128}
+          height={128}
+          className="w-24 h-24 md:w-32 md:h-32 object-contain"
+        />
       </div>
 
-      {/* 4. TABS (Links with Scroll Sync) */}
-      <div className="mb-8 animate-fade-in stagger-3 sticky top-0 py-4 bg-white/90 backdrop-blur-sm z-40 w-full">
-        <p className="text-blue-500 font-bold text-lg mb-4 tracking-widest uppercase border-b-2 border-blue-100 inline-block px-4">
-          TABS
-        </p>
-        <div className="flex flex-wrap justify-center gap-4 md:gap-8 mt-2 max-w-7xl mx-auto">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => {
-                document.getElementById(tab.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-              }}
-              className={`
-                text-sm md:text-lg font-extrabold transition-all duration-300 tracking-wider whitespace-nowrap
-                ${activeTab === tab.id 
-                  ? "text-[#2563eb] border-b-2 border-[#2563eb] pb-1 scale-105" 
-                  : "text-gray-400 hover:text-[#2563eb]"
-                }
-              `}
-            >
-              {tab.label.toUpperCase()}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* 5. Dynamic Photographs Carousel */}
+      {/* 4. Dynamic Photographs Carousel */}
       <div className="w-full max-w-5xl mb-12 animate-fade-in stagger-4">
-        <p className="text-blue-500 font-bold text-lg mb-6 tracking-widest uppercase">
+        {/* <p className="text-blue-500 font-bold text-lg mb-6 tracking-widest uppercase">
           DYNAMIC PHOTOGRAPHS
-        </p>
+        </p> */}
         <div className="relative aspect-[21/9] w-full rounded-2xl overflow-hidden shadow-2xl bg-gray-100 group translate-z-0">
           {photographs.map((img, index) => (
             <div
@@ -140,6 +117,32 @@ export default function HeroSection() {
               <div key={i} className={`w-2 h-2 rounded-full transition-all ${i === current ? "bg-white w-6" : "bg-white/40"}`} />
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* 5. TABS (Links with Scroll Sync) */}
+      <div className="mb-8 animate-fade-in stagger-3 sticky top-0 py-4 bg-white/90 backdrop-blur-sm z-40 w-full">
+        {/* <p className="text-blue-500 font-bold text-lg mb-4 tracking-widest uppercase border-b-2 border-blue-100 inline-block px-4">
+          TABS
+        </p> */}
+        <div className="flex flex-wrap justify-center gap-4 md:gap-8 mt-2 max-w-7xl mx-auto">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => {
+                document.getElementById(tab.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+              className={`
+                text-sm md:text-lg font-extrabold transition-all duration-300 tracking-wider whitespace-nowrap
+                ${activeTab === tab.id 
+                  ? "text-[#2563eb] border-b-2 border-[#2563eb] pb-1 scale-105" 
+                  : "text-gray-400 hover:text-[#2563eb]"
+                }
+              `}
+            >
+              {tab.label.toUpperCase()}
+            </button>
+          ))}
         </div>
       </div>
 

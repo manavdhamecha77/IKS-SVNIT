@@ -14,8 +14,18 @@ export default function TabsSection() {
   const [galleryPage, setGalleryPage] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Group images into pages of 8 (2 rows of 4 on desktop, 2 rows of 2 on mobile)
-  const imagesPerPage = 8;
+  const [imagesPerPage, setImagesPerPage] = useState(8);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setImagesPerPage(window.innerWidth < 768 ? 4 : 8);
+      setGalleryPage(0);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const totalPages = Math.ceil(galleryImages.length / imagesPerPage);
 
   const nextGallery = useCallback(() => {
@@ -184,7 +194,7 @@ export default function TabsSection() {
         {/* ─── Advisors ─── */}
         <SectionWrapper id="advisors">
           <h2 className="text-3xl font-bold text-[#3b82f6] mb-8 tracking-wide">Advisors</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {Array.from({ length: 6 }).map((_, i) => (
               <div key={i} className="flex flex-col items-center gap-3">
                 <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gray-100 border-2 border-gray-100" />

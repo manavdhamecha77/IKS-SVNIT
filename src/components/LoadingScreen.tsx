@@ -1,6 +1,7 @@
 // components/LoadingScreen.tsx
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface LoadingScreenProps {
@@ -41,10 +42,16 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           Centre for Indian Knowledge Systems and Holistic Education
         </h1>
 
-        {/* 3. Logo Placeholder (Animated) */}
+        {/* 3. Logo (Animated) */}
         <div className="relative mb-8">
-          <div className="w-20 h-20 md:w-28 md:h-28 rounded-full border-2 border-green-500 flex items-center justify-center bg-green-50/20 shadow-xl shadow-green-100/50">
-            <span className="text-green-600 font-extrabold text-sm md:text-base">Logo</span>
+          <div className="w-20 h-20 md:w-28 md:h-28 rounded-full flex items-center justify-center bg-white shadow-xl shadow-green-100/50 overflow-hidden">
+            <Image
+              src="/logo/svnit.png"
+              alt="SVNIT Logo"
+              width={112}
+              height={112}
+              className="w-full h-full object-contain"
+            />
           </div>
           {/* Pulsing ring around logo */}
           <div className="absolute inset-[-6px] rounded-full border border-green-200 animate-ping opacity-20" />
