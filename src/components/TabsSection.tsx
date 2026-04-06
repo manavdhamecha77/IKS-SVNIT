@@ -9,17 +9,17 @@ const galleryImages = Array.from({ length: 32 }).map((_, i) => ({
 }));
 
 const phdAreas = [
-  { 
-    title: "Absolute Intelligence", 
-    color: "from-blue-600 to-indigo-700", 
+  {
+    title: "Absolute Intelligence",
+    color: "from-blue-600 to-indigo-700",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
     )
   },
-  { 
-    title: "Health and Wellbeing", 
+  {
+    title: "Health and Wellbeing",
     color: "from-emerald-500 to-teal-600",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -27,8 +27,8 @@ const phdAreas = [
       </svg>
     )
   },
-  { 
-    title: "Ancient Scriptures and Modern Research", 
+  {
+    title: "Ancient Scriptures and Modern Research",
     color: "from-amber-500 to-orange-600",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -36,8 +36,8 @@ const phdAreas = [
       </svg>
     )
   },
-  { 
-    title: "Integrative studies on the Levels of Existence", 
+  {
+    title: "Integrative studies on the Levels of Existence",
     color: "from-indigo-600 to-violet-700",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -45,8 +45,8 @@ const phdAreas = [
       </svg>
     )
   },
-  { 
-    title: "Scientific Studies on Yoga and Meditation", 
+  {
+    title: "Scientific Studies on Yoga and Meditation",
     color: "from-rose-500 to-pink-600",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -54,8 +54,8 @@ const phdAreas = [
       </svg>
     )
   },
-  { 
-    title: "Shrimad Bhagvad Gita in Current Context", 
+  {
+    title: "Shrimad Bhagvad Gita in Current Context",
     color: "from-orange-500 to-red-600",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -63,8 +63,8 @@ const phdAreas = [
       </svg>
     )
   },
-  { 
-    title: "Singularity and Artificial Intelligence", 
+  {
+    title: "Singularity and Artificial Intelligence",
     color: "from-slate-600 to-slate-800",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -72,8 +72,8 @@ const phdAreas = [
       </svg>
     )
   },
-  { 
-    title: "Vedantic Science and Life Management", 
+  {
+    title: "Vedantic Science and Life Management",
     color: "from-yellow-500 to-amber-600",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -156,11 +156,11 @@ export default function TabsSection() {
 
         {/* ─── Vision & Mission ─── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-32">
-          <div id="vision" className="scroll-mt-32 p-10 bg-gradient-to-br from-blue-700 to-indigo-900 rounded-[3rem] text-white shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700" />
-            <SectionTitle gradient="from-amber-400 to-orange-400">Vision</SectionTitle>
-            <p className="text-xl md:text-2xl font-medium leading-relaxed opacity-90 relative z-10">
-              Establishing SVNIT Surat as a global frontier leader in disseminating <span className="text-amber-300 font-black">Indian Knowledge Systems</span> for Holistic Education, rooted in the philosophy of <span className="italic">‘Vasudhaiv Kutumbakam’</span>.
+          <div id="vision" className="scroll-mt-32 p-10 bg-white rounded-[3rem] border-2 border-blue-50 shadow-xl relative overflow-hidden flex flex-col justify-center group">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700" />
+            <SectionTitle gradient="from-blue-600 to-blue-400">Vision</SectionTitle>
+            <p className="text-xl md:text-2xl font-semibold text-slate-800 leading-relaxed relative z-10">
+              Establishing SVNIT Surat as a global frontier leader in disseminating <span className="text-blue-600 font-black">Indian Knowledge Systems</span> for Holistic Education, rooted in the philosophy of <span className="italic leading-loose">‘Vasudhaiv Kutumbakam’</span>.
             </p>
           </div>
 
@@ -181,7 +181,7 @@ export default function TabsSection() {
               <p className="text-slate-600 text-xl font-medium leading-relaxed mb-8">
                 Taught jointly by invited eminent experts and SVNIT faculty, providing students a rare opportunity for deep interactive engagement.
               </p>
-              <button className="px-8 py-3 bg-slate-900 text-white font-bold rounded-full hover:scale-105 active:scale-95 transition-all">VIEW CATALOG</button>
+              <button className="px-8 py-3 bg-blue-700 text-white font-black rounded-full hover:bg-blue-600 hover:scale-105 active:scale-95 transition-all shadow-lg shadow-blue-500/20">VIEW CATALOG</button>
             </div>
             <div className="flex-1 grid grid-cols-2 gap-4 w-full">
               <div className="aspect-square bg-emerald-50 rounded-[2rem] border border-emerald-100 flex items-center justify-center text-emerald-300 animate-pulse">Photo 1</div>
@@ -191,28 +191,42 @@ export default function TabsSection() {
         </div>
 
         {/* ─── Ph.D. Programme ─── */}
-        <div id="phd" className="mb-32 scroll-mt-32 p-8 md:p-14 bg-white rounded-[3.5rem] border border-slate-100 shadow-2xl relative overflow-hidden">
-          <SectionTitle gradient="from-blue-600 to-amber-500" subtitle="Academic Excellence">Ph.D. Programme</SectionTitle>
-          <p className="text-slate-900 font-black text-xl mb-12 tracking-tight">Broad Research Horizons</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div id="phd" className="mb-32 scroll-mt-32">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-16 px-6">
+            <SectionTitle gradient="from-blue-700 to-amber-500" subtitle="Research Hub">Ph.D. Programme</SectionTitle>
+            <p className="text-slate-400 font-bold uppercase tracking-widest text-xs mb-12">Academic Excellence</p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {phdAreas.map((area, i) => (
               <div 
                 key={i} 
-                className="group relative h-48 p-8 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-slate-200 transition-all duration-500 cursor-default"
+                className="group relative aspect-[3/4] bg-slate-100 rounded-[2.5rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-4"
               >
-                {/* Vibrant Background Gradient Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${area.color} opacity-90 group-hover:opacity-100 transition-opacity`} />
+                {/* 1. Background Image Placeholder / Color Block */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${area.color} opacity-40 group-hover:opacity-60 transition-opacity`} />
+                <div className="absolute inset-0 bg-slate-900/20 mix-blend-multiply" />
                 
-                {/* Decorative Pattern inside card */}
-                <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700" />
+                {/* 2. Abstract Geometric Accents (Vertical-focused) */}
+                <div className="absolute top-0 right-0 w-24 h-full bg-white/10 skew-x-12 translate-x-12 group-hover:translate-x-0 transition-transform duration-1000" />
 
-                <div className="relative z-10 h-full flex flex-col justify-between">
-                  <div className="text-white/80 group-hover:text-white transition-colors">
+                {/* 3. Card Content Overlay */}
+                <div className="absolute inset-0 p-10 flex flex-col justify-end text-white z-10 transition-transform duration-700 group-hover:scale-105">
+                  <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 w-fit mb-6 border border-white/20 group-hover:bg-amber-400/20 transition-colors">
                     {area.icon}
                   </div>
-                  <h4 className="text-white text-lg font-black leading-tight tracking-tight mt-4">
+                  <h4 className="text-2xl font-black leading-tight tracking-tight mb-4 group-hover:text-amber-400 transition-colors">
                     {area.title}
                   </h4>
+                  <div className="h-1.5 w-12 bg-white/30 rounded-full group-hover:w-full group-hover:bg-amber-400 transition-all duration-700" />
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] mt-6 opacity-0 group-hover:opacity-70 transition-opacity">
+                    Research Area
+                  </p>
+                </div>
+
+                {/* Background Pattern */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none uppercase font-black text-6xl break-all leading-none grayscale invert tracking-tighter">
+                  {area.title.slice(0,3)}
                 </div>
               </div>
             ))}

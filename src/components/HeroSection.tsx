@@ -1,16 +1,29 @@
 "use client";
 import Image from "next/image";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
-const photographs = [
-  { src: null as string | null, alt: "Photograph 1" },
-  { src: null as string | null, alt: "Photograph 2" },
-  { src: null as string | null, alt: "Photograph 3" },
-  { src: null as string | null, alt: "Photograph 4" },
-  { src: null as string | null, alt: "Photograph 5" },
-  { src: null as string | null, alt: "Photograph 6" },
-  { src: null as string | null, alt: "Photograph 7" },
-  { src: null as string | null, alt: "Photograph 8" },
+const slides = [
+  { 
+    id: 1, 
+    title: "Vedic Science", 
+    image: null, 
+    color: "bg-blue-600",
+    text: "Ancient Wisdom for Modern Innovations" 
+  },
+  { 
+    id: 2, 
+    title: "Holistic Health", 
+    image: null, 
+    color: "bg-amber-500",
+    text: "Synthesizing Yoga & Contemporary Wellness" 
+  },
+  { 
+    id: 3, 
+    title: "Global Leadership", 
+    image: null, 
+    color: "bg-emerald-600",
+    text: "Disseminating Indian Knowledge Systems Globally" 
+  },
 ];
 
 const tabs = [
@@ -24,172 +37,140 @@ const tabs = [
 ];
 
 export default function HeroSection() {
-  const [activeTab, setActiveTab] = useState("objectives");
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Handle intersection observer to auto-highlight tabs on scroll
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-            setActiveTab(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    tabs.forEach((tab) => {
-      const el = document.getElementById(tab.id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearInterval(interval);
+    };
   }, []);
 
   return (
-    <div className="relative min-h-screen flex flex-col font-sans">
+    <div className="relative min-h-[90vh] flex flex-col overflow-hidden bg-white">
       
-      {/* 1. Header / Navbar (Sticky & Glassmorphism) */}
+      {/* 1. Navigation */}
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 md:px-12 py-4 flex items-center justify-between
-        ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-lg" : "bg-transparent text-white"}`}
+        ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-xl" : "bg-transparent"}`}
       >
-        <div className="flex items-center gap-4 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <div className="relative w-12 h-12 md:w-16 md:h-16 transition-transform duration-300 group-hover:scale-110">
-            <Image
-              src="/logo/svnit.png"
-              alt="SVNIT Logo"
-              fill
-              className="object-contain"
-            />
+        <div className="flex items-center gap-4 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <div className="relative w-12 h-12 md:w-16 md:h-16">
+            <Image src="/logo/svnit.png" alt="SVNIT" fill className="object-contain" />
           </div>
-          <div className="hidden md:block">
-            <p className={`font-bold text-sm tracking-widest uppercase transition-colors ${isScrolled ? "text-blue-900" : "text-white"}`}>
-              SVNIT Surat
-            </p>
-            <p className={`text-[10px] font-medium opacity-80 uppercase transition-colors ${isScrolled ? "text-blue-600" : "text-white/80"}`}>
-              Centre for IKS & Holistic Education
-            </p>
+          <div>
+            <p className="font-black text-xs md:text-sm tracking-widest uppercase text-blue-900">SVNIT SURAT</p>
+            <p className="text-[10px] font-bold text-blue-600 uppercase opacity-70">Centre for IKS</p>
           </div>
         </div>
 
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-6">
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => {
-                document.getElementById(tab.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-              }}
-              className={`text-xs font-bold uppercase tracking-widest transition-all hover:scale-105 active:scale-95
-              ${isScrolled 
-                ? (activeTab === tab.id ? "text-blue-600" : "text-gray-600 hover:text-blue-500") 
-                : (activeTab === tab.id ? "text-amber-400" : "text-white/80 hover:text-white")}`}
+              onClick={() => document.getElementById(tab.id)?.scrollIntoView({ behavior: "smooth" })}
+              className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-blue-600 transition-colors"
             >
               {tab.label}
             </button>
           ))}
         </nav>
-
-        <button className="lg:hidden p-2 rounded-full border border-current opacity-70">
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-          </svg>
-        </button>
       </header>
 
-      {/* 2. Hero Body with Hexagonal Background Grid */}
-      <section className="relative flex-grow min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
+      {/* 2. Main Hero Content & Vertical Carousel Background */}
+      <div className="relative flex-grow flex items-center pt-24">
         
-        {/* Hexagonal Grid Layer */}
-        <div className="absolute inset-0 z-0 opacity-40">
-          <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-1 scale-110 -rotate-12 translate-x-[-10%] translate-y-[-10%]">
-            {Array.from({ length: 48 }).map((_, i) => (
-              <div 
-                key={i} 
-                className={`hexagon aspect-[0.86] w-full bg-gradient-to-br transition-all duration-1000 animate-pulse-soft
-                ${i % 7 === 0 ? "from-amber-400 to-orange-500 scale-90" : 
-                  i % 5 === 0 ? "from-blue-500 to-indigo-700" : 
-                  i % 3 === 0 ? "from-slate-700 to-slate-800" : "from-slate-800 to-slate-900"}`}
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                {/* Randomly place images in some hexagons */}
-                {i % 11 === 0 && (
-                  <div className="w-full h-full opacity-60 mix-blend-overlay">
-                    <div className="w-full h-full bg-gray-500" /> {/* Placeholder for image */}
-                  </div>
-                )}
+        {/* Background Vertical Rectangles Grid */}
+        <div className="absolute inset-0 z-0 grid grid-cols-3 md:grid-cols-6 h-full w-full gap-2 p-2">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div 
+              key={i} 
+              className={`relative overflow-hidden rounded-2xl transition-all duration-1000 ease-out
+              ${(i + currentSlide) % 3 === 0 ? "h-full" : "h-3/4 self-center"}
+              ${i % 2 === 0 ? "bg-slate-50" : "bg-blue-50/50"}`}
+            >
+              {/* Vertical Image frame placeholder */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/20 to-white/60" />
+              <div className="absolute bottom-4 left-0 right-0 text-center opacity-10">
+                <p className="text-[8px] font-black uppercase tracking-widest text-blue-900">Research Frame {i+1}</p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
-        {/* Ambient Glows */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px] animate-pulse stagger-5" />
-
-        {/* Content Overlay */}
-        <div className="relative z-10 max-w-6xl px-6 py-32 text-center flex flex-col items-center">
+        {/* Content Container */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full flex flex-col md:flex-row items-center justify-between gap-12">
           
-          <div className="inline-block mb-6 animate-fade-in-up">
-            <p className="text-amber-400 font-bold tracking-[0.4em] uppercase text-xs md:text-sm mb-2 drop-shadow-sm">
-              Welcome to the Centre of Excellence
+          <div className="flex-1 text-left">
+            <div className="inline-flex items-center gap-3 mb-6 bg-blue-600/10 px-4 py-2 rounded-full border border-blue-100 animate-fade-in">
+              <div className="w-2 h-2 rounded-full bg-blue-600 animate-ping" />
+              <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest">In pursuit of excellence</p>
+            </div>
+            
+            <h1 className="text-4xl md:text-7xl font-black text-slate-950 mb-8 leading-[1.05] tracking-tighter">
+              भारतीय ज्ञान परंपरा <br/>
+              <span className="text-blue-700">CENTRE FOR IKS</span>
+            </h1>
+            
+            <p className="max-w-xl text-slate-600 text-lg md:text-xl font-medium leading-relaxed mb-10">
+              SVNIT Surat established the Centre for Indian Knowledge Systems and Holistic Education to bridge timeless wisdom with futuristic discovery.
             </p>
-            <div className="h-1 w-full bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
+
+            <div className="flex flex-wrap gap-4">
+              <button 
+                onClick={() => document.getElementById('phd')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-10 py-5 bg-blue-700 text-white font-black rounded-2xl hover:bg-blue-900 transition-all shadow-xl shadow-blue-500/20 active:scale-95"
+              >
+                JOIN RESEARCH
+              </button>
+              <button 
+                onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-10 py-5 bg-white text-blue-700 border-2 border-blue-100 font-black rounded-2xl hover:bg-blue-50 transition-all active:scale-95"
+              >
+                OUR WORK
+              </button>
+            </div>
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-8 tracking-tight leading-[1.1] animate-fade-in-up stagger-1">
-            <span className="block text-amber-50 rounded-lg px-4 py-2 border border-white/10 backdrop-blur-sm bg-white/5 mb-4">
-              भारतीय ज्ञान परंपरा एवं समग्र शिक्षा केन्द्र
-            </span>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-white">
-              Centre for Indian Knowledge Systems and Holistic Education
-            </span>
-          </h1>
-
-          <p className="text-blue-100/90 text-lg md:text-2xl font-medium max-w-3xl mb-12 leading-relaxed animate-fade-in-up stagger-2">
-            Pioneering the synthesis of <span className="text-amber-300 font-bold">Ancient Wisdom</span> and <span className="text-blue-300 font-bold">Modern Science</span> for the next generation of global citizens.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-6 animate-fade-in-up stagger-3">
-            <button 
-              onClick={() => document.getElementById('objectives')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-10 py-4 bg-amber-500 text-blue-950 font-black rounded-full hover:bg-amber-400 hover:scale-105 active:scale-95 transition-all shadow-xl shadow-amber-500/20 flex items-center gap-2 group"
-            >
-              EXPLORE OUR MISSION
-              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </button>
-            <button 
-              onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-10 py-4 bg-white/10 backdrop-blur-md text-white font-bold border border-white/20 rounded-full hover:bg-white/20 hover:scale-105 active:scale-95 transition-all"
-            >
-              VIEW GALLERY
-            </button>
+          {/* Vertical Carousel Feature Frame (Wider, Original Height, with Left Gap) */}
+          <div className="flex-[1.6] w-full max-w-4xl aspect-[1.3] md:ml-16 relative group perspective-1000 hidden md:block">
+            <div className="absolute inset-0 bg-blue-600 rounded-[3rem] rotate-3 opacity-10 group-hover:rotate-6 transition-transform" />
+            <div className="absolute inset-0 bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl transition-all duration-700 transform group-hover:-translate-y-4">
+              {/* Vertical Image Slide */}
+              <div className="w-full h-full relative">
+                <div className="absolute inset-0 bg-blue-900/40 mix-blend-overlay z-10" />
+                <div className="absolute bottom-12 left-10 right-10 z-20 text-white">
+                  <p className="text-amber-400 font-black text-xs tracking-widest uppercase mb-4">{slides[currentSlide].title}</p>
+                  <h3 className="text-3xl font-black mb-4 leading-tight">{slides[currentSlide].text}</h3>
+                  <div className="flex gap-2">
+                    {slides.map((_, i) => (
+                      <div key={i} className={`h-1 rounded-full transition-all duration-500 ${currentSlide === i ? "w-8 bg-amber-400" : "w-2 bg-white/30"}`} />
+                    ))}
+                  </div>
+                </div>
+                {/* Image Placeholder */}
+                <div className="w-full h-full bg-gradient-to-br from-blue-600 to-indigo-950 flex items-center justify-center opacity-50">
+                  <span className="text-white/20 text-8xl font-black">IKS</span>
+                </div>
+              </div>
+            </div>
           </div>
-
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-bounce">
-          <p className="text-[10px] text-white font-bold tracking-widest uppercase">Scroll Down</p>
-          <div className="w-px h-12 bg-gradient-to-b from-white to-transparent" />
-        </div>
+      </div>
 
-      </section>
+      {/* Scroll indicator overlay */}
+      <div className="absolute bottom-10 left-12 hidden lg:flex flex-col items-center gap-4 opacity-30">
+        <div className="w-px h-24 bg-gradient-to-b from-blue-700 to-transparent" />
+        <p className="rotate-90 origin-left text-[10px] font-black tracking-widest text-blue-900 ml-1 translate-y-8">DISCOVER</p>
+      </div>
 
-      {/* 3. Subtle Transition to Content */}
-      <div className="h-24 bg-gradient-to-b from-slate-900 to-white" />
     </div>
   );
 }
