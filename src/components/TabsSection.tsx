@@ -1,4 +1,3 @@
-// components/TabsSection.tsx
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
@@ -9,11 +8,85 @@ const galleryImages = Array.from({ length: 32 }).map((_, i) => ({
   alt: `Gallery Image ${i + 1}`
 }));
 
+const phdAreas = [
+  { 
+    title: "Absolute Intelligence", 
+    color: "from-blue-600 to-indigo-700", 
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    )
+  },
+  { 
+    title: "Health and Wellbeing", 
+    color: "from-emerald-500 to-teal-600",
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+      </svg>
+    )
+  },
+  { 
+    title: "Ancient Scriptures and Modern Research", 
+    color: "from-amber-500 to-orange-600",
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+      </svg>
+    )
+  },
+  { 
+    title: "Integrative studies on the Levels of Existence", 
+    color: "from-indigo-600 to-violet-700",
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+      </svg>
+    )
+  },
+  { 
+    title: "Scientific Studies on Yoga and Meditation", 
+    color: "from-rose-500 to-pink-600",
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.828a5 5 0 117.07 0m-4.242-4.242a1 1 0 111.414 0" />
+      </svg>
+    )
+  },
+  { 
+    title: "Shrimad Bhagvad Gita in Current Context", 
+    color: "from-orange-500 to-red-600",
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+    )
+  },
+  { 
+    title: "Singularity and Artificial Intelligence", 
+    color: "from-slate-600 to-slate-800",
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+      </svg>
+    )
+  },
+  { 
+    title: "Vedantic Science and Life Management", 
+    color: "from-yellow-500 to-amber-600",
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    )
+  },
+];
+
 export default function TabsSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [galleryPage, setGalleryPage] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
-
   const [imagesPerPage, setImagesPerPage] = useState(8);
 
   useEffect(() => {
@@ -47,163 +120,143 @@ export default function TabsSection() {
     return () => observer.disconnect();
   }, []);
 
-  const SectionWrapper = ({ id, children }: { id: string; children: React.ReactNode }) => (
-    <div id={id} className="py-12 md:py-20 border-b border-gray-100 last:border-0 scroll-mt-20">
-      {children}
+  const SectionTitle = ({ children, gradient, subtitle }: { children: React.ReactNode, gradient: string, subtitle?: string }) => (
+    <div className="mb-12 relative">
+      <div className={`w-20 h-1.5 rounded-full bg-gradient-to-r ${gradient} mb-4`} />
+      <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-none mb-2">
+        {children}
+      </h2>
+      {subtitle && <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">{subtitle}</p>}
     </div>
   );
 
   return (
-    <section ref={sectionRef} className="bg-white">
-      <div className={`max-w-4xl mx-auto px-6 relative transition-all duration-700 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}>
+    <section ref={sectionRef} className="bg-[#fcfdfd] py-24">
+      <div className={`max-w-6xl mx-auto px-6 relative transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"}`}>
 
         {/* ─── Objectives ─── */}
-        <SectionWrapper id="objectives">
-          <h2 className="text-3xl font-bold text-[#3b82f6] mb-8 tracking-wide">Objectives</h2>
-          <ul className="list-disc pl-6 space-y-6 text-gray-700 text-lg leading-relaxed font-medium">
-            <li>To offer a unique technical hub for research on India&apos;s scientific and cultural heritage leading to the Doctoral Degree – Ph. D. in the relevant area of Indigenous Knowledge and Ancient Wisdom</li>
-            <li>To disseminate Indigenous knowledge for better perception, innovations and societal applications</li>
-            <li>To design and offer credit courses and non-credit courses related to IKS for Holistic Education for overall growth and wellbeing of the stakeholders</li>
-            <li>To serve the society by spreading the Indigenous knowledge to the general public for overall wellness</li>
-          </ul>
-        </SectionWrapper>
-
-        {/* ─── Vision ─── */}
-        <SectionWrapper id="vision">
-          <h2 className="text-3xl font-bold text-[#3b82f6] mb-8 tracking-wide">Vision</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <p className="text-gray-700 text-lg md:text-xl leading-relaxed font-medium">
-              To establish SVNIT Surat as a frontier leader in disseminating Indian Knowledge Systems for Holistic Education with aspiration of harmony with the existence with the feeling of &lsquo;Vasudhaiv Kutumbakam&rsquo; 
-            </p>
-            <div className="aspect-video md:aspect-square bg-gray-100 rounded-2xl border border-gray-200 flex items-center justify-center text-gray-300">
-              {/* <img src="/vision-img.jpg" className="w-full h-full object-cover rounded-2xl" /> */}
-              <span>Vision Image</span>
-            </div>
-          </div>
-        </SectionWrapper>
-
-        {/* ─── Mission ─── */}
-        <SectionWrapper id="mission">
-          <h2 className="text-3xl font-bold text-[#3b82f6] mb-8 tracking-wide">Mission</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="order-2 md:order-1 aspect-video md:aspect-square bg-gray-100 rounded-2xl border border-gray-200 flex items-center justify-center text-gray-300">
-              {/* <img src="/mission-img.jpg" className="w-full h-full object-cover rounded-2xl" /> */}
-              <span>Mission Image</span>
-            </div>
-            <div className="order-1 md:order-2 p-8 bg-yellow-50 rounded-2xl border border-yellow-100 shadow-sm">
-              <p className="text-gray-700 text-lg md:text-xl leading-relaxed font-medium">
-                Facilitating the journey from head to heart by <span className="bg-yellow-200/50 px-1">disseminating the profound ancient indigenous wisdom</span> for integrating them to the modern education for holistic advancement
-              </p>
-            </div>
-          </div>
-        </SectionWrapper>
-
-        {/* ─── Courses ─── */}
-        <SectionWrapper id="courses">
-          <h2 className="text-3xl font-bold text-[#3b82f6] mb-8 tracking-wide">Courses</h2>
-          <p className="text-gray-700 text-lg leading-relaxed font-medium mb-8">
-            The centre proposes to offer courses (credit courses as well as non-credit courses) to be taught jointly by eminent experts invited from various parts of the country, along with few faculty members from SVNIT Surat which will provide students with a rare opportunity to listen to and interact with experts.
-          </p>
-          <div className="grid grid-cols-2 gap-4">
-             <div className="h-40 bg-gray-100 rounded-xl flex items-center justify-center text-gray-300 text-xs">Course Image 1</div>
-             <div className="h-40 bg-gray-100 rounded-xl flex items-center justify-center text-gray-300 text-xs">Course Image 2</div>
-          </div>
-        </SectionWrapper>
-
-        {/* ─── Ph.D. Programme ─── */}
-        <SectionWrapper id="phd">
-          <h2 className="text-3xl font-bold text-[#3b82f6] mb-4 tracking-wide underline underline-offset-8">Ph. D. Programme</h2>
-          <p className="text-gray-900 font-bold text-xl mb-8">Broad Research Areas include (but not limited to)</p>
-          <ul className="list-disc pl-6 space-y-4 text-gray-700 text-lg font-medium">
-            <li>Absolute Intelligence</li>
-            <li>Health and <span className="bg-yellow-200/50 px-1 decoration-red-500">Wellbeing</span></li>
-            <li>Ancient Scriptures and Modern Research</li>
-            <li className="bg-yellow-100/40 inline-block px-1">Integrative studies on the Levels of Existence</li>
-            <li className="bg-yellow-100/40 inline-block px-1">Scientific Studies on Yoga and Meditation</li>
-            <li><span className="decoration-red-500 underline underline-offset-4 decoration-wavy">Shrimad Bhagvad Gita</span> in Current Context</li>
-            <li>Singularity and Artificial Intelligence: Evolutionary Awakening</li>
-            <li className="bg-yellow-100/40 inline-block px-1">Intelligent Integration of Education and Science in Light of Madhyasth Darshan</li>
-            <li className="bg-yellow-100/40 inline-block px-1">Vedantic Science and Life Management</li>
-          </ul>
-        </SectionWrapper>
-
-        {/* ─── Gallery (Grid with Slider) ─── */}
-        <SectionWrapper id="gallery">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="text-3xl font-bold text-[#3b82f6] tracking-wide">Gallery</h2>
-              <p className="text-gray-400 text-sm italic font-medium mt-1 uppercase tracking-wider">A visual journey</p>
-            </div>
-            {/* Gallery Navigation */}
-            <div className="flex gap-2">
-              <button 
-                onClick={prevGallery}
-                className="p-2 rounded-full border border-gray-200 hover:bg-blue-50 hover:text-blue-600 transition-all text-gray-400"
-              >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button 
-                onClick={nextGallery}
-                className="p-2 rounded-full border border-gray-200 hover:bg-blue-50 hover:text-blue-600 transition-all text-gray-400"
-              >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <div className="overflow-hidden relative">
-            <div 
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 transition-all duration-700"
-            >
-              {galleryImages.slice(galleryPage * imagesPerPage, (galleryPage + 1) * imagesPerPage).map((img, i) => (
-                <div 
-                  key={i} 
-                  className="aspect-square bg-gray-100 rounded-lg overflow-hidden border border-gray-200 hover:shadow-lg transition-all group flex items-center justify-center animate-fade-in"
-                >
-                  {img.src ? (
-                    <img src={img.src} alt={img.alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-                  ) : (
-                    <div className="flex flex-col items-center">
-                      <svg className="w-6 h-6 text-gray-300 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      <span className="text-[10px] text-gray-400 font-bold uppercase tracking-tighter">Photo {galleryPage * imagesPerPage + i + 1}</span>
-                    </div>
-                  )}
+        <div id="objectives" className="mb-32 scroll-mt-32">
+          <SectionTitle gradient="from-blue-600 to-indigo-600" subtitle="Our Core Goals">Objectives</SectionTitle>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              "Technical hub for Ph.D. research in ancient indigenous knowledge and ancient wisdom.",
+              "Disseminate knowledge for innovations and diverse societal applications.",
+              "Offer credit and non-credit courses for holistic student growth.",
+              "Spread wellness-focused knowledge to the global general public."
+            ].map((obj, i) => (
+              <div key={i} className="group p-8 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-500 flex gap-6 items-start hover:-translate-y-1">
+                <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 font-black flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                  {i + 1}
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Pagination Indicators */}
-          <div className="flex justify-center gap-2 mt-8">
-            {Array.from({ length: totalPages }).map((_, i) => (
-              <button 
-                key={i}
-                onClick={() => setGalleryPage(i)}
-                className={`h-1.5 rounded-full transition-all ${i === galleryPage ? "w-8 bg-blue-500" : "w-2 bg-gray-200 hover:bg-gray-300"}`}
-              />
-            ))}
-          </div>
-        </SectionWrapper>
-
-        {/* ─── Advisors ─── */}
-        <SectionWrapper id="advisors">
-          <h2 className="text-3xl font-bold text-[#3b82f6] mb-8 tracking-wide">Advisors</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="flex flex-col items-center gap-3">
-                <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gray-100 border-2 border-gray-100" />
-                <div className="h-4 w-20 bg-gray-100 rounded" />
-                <div className="h-3 w-16 bg-gray-50 rounded" />
+                <p className="text-slate-600 text-lg font-medium leading-relaxed">{obj}</p>
               </div>
             ))}
           </div>
-        </SectionWrapper>
+        </div>
+
+        {/* ─── Vision & Mission ─── */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-32">
+          <div id="vision" className="scroll-mt-32 p-10 bg-gradient-to-br from-blue-700 to-indigo-900 rounded-[3rem] text-white shadow-2xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700" />
+            <SectionTitle gradient="from-amber-400 to-orange-400">Vision</SectionTitle>
+            <p className="text-xl md:text-2xl font-medium leading-relaxed opacity-90 relative z-10">
+              Establishing SVNIT Surat as a global frontier leader in disseminating <span className="text-amber-300 font-black">Indian Knowledge Systems</span> for Holistic Education, rooted in the philosophy of <span className="italic">‘Vasudhaiv Kutumbakam’</span>.
+            </p>
+          </div>
+
+          <div id="mission" className="scroll-mt-32 p-10 bg-white rounded-[3rem] border-2 border-amber-100 shadow-xl relative overflow-hidden flex flex-col justify-center">
+            <div className="absolute bottom-0 right-0 w-32 h-32 bg-amber-50 rounded-tl-full pointer-events-none" />
+            <SectionTitle gradient="from-blue-600 to-indigo-600">Mission</SectionTitle>
+            <p className="text-xl md:text-2xl font-semibold text-slate-800 leading-relaxed">
+              Facilitating a journey from <span className="text-blue-600 font-black">Head to Heart</span> by integrating profound ancient wisdom with modern education for integrated advancement.
+            </p>
+          </div>
+        </div>
+
+        {/* ─── Courses ─── */}
+        <div id="courses" className="mb-32 scroll-mt-32">
+          <div className="flex flex-col md:flex-row gap-12 items-center">
+            <div className="flex-1">
+              <SectionTitle gradient="from-emerald-500 to-teal-500" subtitle="Educational Programs">Courses</SectionTitle>
+              <p className="text-slate-600 text-xl font-medium leading-relaxed mb-8">
+                Taught jointly by invited eminent experts and SVNIT faculty, providing students a rare opportunity for deep interactive engagement.
+              </p>
+              <button className="px-8 py-3 bg-slate-900 text-white font-bold rounded-full hover:scale-105 active:scale-95 transition-all">VIEW CATALOG</button>
+            </div>
+            <div className="flex-1 grid grid-cols-2 gap-4 w-full">
+              <div className="aspect-square bg-emerald-50 rounded-[2rem] border border-emerald-100 flex items-center justify-center text-emerald-300 animate-pulse">Photo 1</div>
+              <div className="aspect-square bg-teal-50 rounded-[2rem] border border-teal-100 flex items-center justify-center text-teal-300 animate-pulse delay-150">Photo 2</div>
+            </div>
+          </div>
+        </div>
+
+        {/* ─── Ph.D. Programme ─── */}
+        <div id="phd" className="mb-32 scroll-mt-32 p-8 md:p-14 bg-white rounded-[3.5rem] border border-slate-100 shadow-2xl relative overflow-hidden">
+          <SectionTitle gradient="from-blue-600 to-amber-500" subtitle="Academic Excellence">Ph.D. Programme</SectionTitle>
+          <p className="text-slate-900 font-black text-xl mb-12 tracking-tight">Broad Research Horizons</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {phdAreas.map((area, i) => (
+              <div 
+                key={i} 
+                className="group relative h-48 p-8 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-slate-200 transition-all duration-500 cursor-default"
+              >
+                {/* Vibrant Background Gradient Overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${area.color} opacity-90 group-hover:opacity-100 transition-opacity`} />
+                
+                {/* Decorative Pattern inside card */}
+                <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700" />
+
+                <div className="relative z-10 h-full flex flex-col justify-between">
+                  <div className="text-white/80 group-hover:text-white transition-colors">
+                    {area.icon}
+                  </div>
+                  <h4 className="text-white text-lg font-black leading-tight tracking-tight mt-4">
+                    {area.title}
+                  </h4>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ─── Gallery ─── */}
+        <div id="gallery" className="mb-32 scroll-mt-32">
+          <div className="flex items-end justify-between mb-12">
+            <SectionTitle gradient="from-rose-500 to-pink-500" subtitle="Moments & Memories">Gallery</SectionTitle>
+            <div className="flex gap-4 mb-12">
+              <button onClick={prevGallery} className="w-12 h-12 rounded-2xl border-2 border-slate-200 flex items-center justify-center text-slate-400 hover:border-rose-500 hover:text-rose-500 transition-all font-black">←</button>
+              <button onClick={nextGallery} className="w-12 h-12 rounded-2xl border-2 border-slate-200 flex items-center justify-center text-slate-400 hover:border-rose-500 hover:text-rose-500 transition-all font-black">→</button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {galleryImages.slice(galleryPage * imagesPerPage, (galleryPage + 1) * imagesPerPage).map((img, i) => (
+              <div key={i} className="aspect-square bg-slate-50 rounded-3xl border border-slate-100 shadow-sm hover:shadow-2xl transition-all group overflow-hidden flex items-center justify-center">
+                <div className="flex flex-col items-center opacity-20">
+                  <span className="text-3xl">📷</span>
+                  <p className="text-[10px] font-black uppercase mt-2">PHOTO {galleryPage * imagesPerPage + i + 1}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ─── Advisors ─── */}
+        <div id="advisors" className="scroll-mt-32">
+          <SectionTitle gradient="from-amber-500 to-orange-500" subtitle="Academic Council">Advisors</SectionTitle>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div key={i} className="flex flex-col items-center group">
+                <div className="w-40 h-40 rounded-full bg-slate-100 border-4 border-white shadow-xl mb-6 overflow-hidden relative group-hover:scale-110 transition-transform duration-500">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent" />
+                </div>
+                <div className="h-4 w-32 bg-slate-200 rounded-full mb-2 animate-pulse" />
+                <div className="h-3 w-24 bg-slate-100 rounded-full animate-pulse delay-100" />
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );
