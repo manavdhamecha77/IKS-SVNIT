@@ -102,8 +102,8 @@ export default function HeroSection() {
       </div>
 
       {/* ─── Carousel Section (DYNAMIC PHOTOGRAPHS) ─── */}
-      <section className={`relative max-w-6xl mx-auto px-6 mb-24 transition-all duration-1000 delay-700 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"}`}>
-        <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-[3rem] md:rounded-[4rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] border-[12px] border-white group">
+      <section className={`relative max-w-[95vw] 2xl:max-w-7xl mx-auto px-2 md:px-6 mb-24 transition-all duration-1000 delay-700 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"}`}>
+        <div className="relative aspect-[4/5] md:aspect-[3/2] rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.2)] border-[8px] md:border-[16px] border-white group">
           {slides.map((slide, index) => (
             <div
               key={slide.id}
