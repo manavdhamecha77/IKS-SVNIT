@@ -71,7 +71,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           <div className="w-64 h-2 bg-slate-100 rounded-full overflow-hidden relative border border-slate-200/50 shadow-inner">
             <div
               className={`
-                h-full bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600
+                h-full bg-blue-600
                 transition-all duration-[2200ms] ease-out shadow-[0_0_15px_rgba(37,99,235,0.3)]
                 ${phase === "in" ? "w-0" : "w-full"}
               `}

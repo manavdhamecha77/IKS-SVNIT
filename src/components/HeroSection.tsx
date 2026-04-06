@@ -84,15 +84,15 @@ export default function HeroSection() {
         {/* Main Headings */}
         <div className={`space-y-6 transition-all duration-1000 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
           <div className="flex flex-col items-center">
-            <div className="w-24 h-2 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 mb-8 blur-[0.5px] animate-pulse" />
+            <div className="w-24 h-2 rounded-full bg-blue-600 mb-8 blur-[0.5px] animate-pulse" />
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tight leading-tight mb-4">
               भारतीय ज्ञान परंपरा एवं <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-600">समग्र शिक्षा केन्द्र</span>
+              <span className="text-blue-700">समग्र शिक्षा केन्द्र</span>
             </h1>
             <div className="h-1 w-40 bg-slate-100 rounded-full mb-8" />
             <h2 className="text-xl md:text-2xl text-slate-500 font-bold uppercase tracking-[0.2em] max-w-4xl mx-auto leading-relaxed">
               Centre for Indian Knowledge Systems <br className="hidden md:block" />
-              <span className="text-blue-600/80">& Holistic Education</span>
+              <span className="text-blue-600 opacity-80">& Holistic Education</span>
             </h2>
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function HeroSection() {
               {/* Caption */}
               <div className="absolute bottom-10 left-12 right-12 text-white z-10">
                 <p className="text-[10px] font-black uppercase tracking-[0.5em] mb-3 text-blue-400 group-hover:translate-x-2 transition-all duration-500">{slide.title}</p>
-                <div className="h-1.5 w-24 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full group-hover:w-full transition-all duration-1000" />
+                <div className="h-1.5 w-24 bg-blue-600 rounded-full group-hover:w-full transition-all duration-1000" />
               </div>
             </div>
           ))}

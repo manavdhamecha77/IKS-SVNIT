@@ -12,7 +12,7 @@ const galleryImages = Array.from({ length: 41 }).map((_, i) => ({
 const phdAreas = [
   {
     title: "Absolute Intelligence",
-    color: "from-blue-600 to-indigo-700",
+    color: "bg-blue-600",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -21,7 +21,7 @@ const phdAreas = [
   },
   {
     title: "Health and Wellbeing",
-    color: "from-emerald-500 to-teal-600",
+    color: "bg-emerald-600",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -30,7 +30,7 @@ const phdAreas = [
   },
   {
     title: "Ancient Scriptures and Modern Research",
-    color: "from-amber-500 to-orange-600",
+    color: "bg-amber-600",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -39,7 +39,7 @@ const phdAreas = [
   },
   {
     title: "Integrative studies on the Levels of Existence",
-    color: "from-indigo-600 to-violet-700",
+    color: "bg-indigo-600",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
@@ -48,7 +48,7 @@ const phdAreas = [
   },
   {
     title: "Scientific Studies on Yoga and Meditation",
-    color: "from-rose-500 to-pink-600",
+    color: "bg-rose-600",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.828a5 5 0 117.07 0m-4.242-4.242a1 1 0 111.414 0" />
@@ -57,7 +57,7 @@ const phdAreas = [
   },
   {
     title: "Shrimad Bhagvad Gita in Current Context",
-    color: "from-orange-500 to-red-600",
+    color: "bg-orange-600",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -66,7 +66,7 @@ const phdAreas = [
   },
   {
     title: "Singularity and Artificial Intelligence: Evolutionary Awakening",
-    color: "from-slate-600 to-slate-800",
+    color: "bg-slate-700",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -75,7 +75,7 @@ const phdAreas = [
   },
   {
     title: "Intelligent Integration of Education and Science in Light of Madhyasth Darshan",
-    color: "from-cyan-500 to-blue-600",
+    color: "bg-cyan-600",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
@@ -84,7 +84,7 @@ const phdAreas = [
   },
   {
     title: "Vedantic Science and Life Management",
-    color: "from-yellow-500 to-amber-600",
+    color: "bg-yellow-500",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -132,7 +132,7 @@ export default function TabsSection() {
 
   const SectionTitle = ({ children, gradient, subtitle }: { children: React.ReactNode, gradient: string, subtitle?: string }) => (
     <div className="mb-12 relative">
-      <div className={`w-20 h-1.5 rounded-full bg-gradient-to-r ${gradient} mb-4`} />
+      <div className={`w-20 h-1.5 rounded-full ${gradient.replace('from-', 'bg-').split(' ')[0]} mb-4`} />
       <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-none mb-2">
         {children}
       </h2>
@@ -221,49 +221,36 @@ export default function TabsSection() {
             <p className="text-slate-400 font-bold uppercase tracking-widest text-xs mb-12">Academic Excellence</p>
           </div>
           
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             {phdAreas.map((area, i) => (
               <div 
                 key={i} 
-                className="group relative flex flex-col bg-white rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-lg md:shadow-2xl hover:shadow-blue-500/10 transition-all duration-700 hover:-translate-y-2 border border-slate-100"
+                className="group relative flex flex-col bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-600/30 transition-all duration-500 overflow-hidden"
               >
-                {/* 1. Dynamic Background Image with Depth */}
-                <div className="relative h-32 md:h-56 overflow-hidden">
-                  <Image 
-                    src={`/images/image${18 + (i % 23)}.png`} 
-                    alt={area.title} 
-                    fill 
-                    className="object-cover group-hover:scale-110 transition-transform duration-1000 brightness-90" 
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent`} />
-                  <div className={`absolute inset-0 bg-gradient-to-br ${area.color} mix-blend-multiply opacity-20`} />
-                </div>
-
-                {/* 2. Content Section (Grows to Fill Space) */}
-                <div className="flex-1 p-5 md:p-10 flex flex-col">
-                  {/* Floating Icon */}
-                  <div className={`-mt-10 md:-mt-20 relative z-20 w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-gradient-to-br ${area.color} p-2.5 md:p-4 text-white shadow-xl shadow-blue-500/10 mb-4 md:mb-8 group-hover:rotate-6 transition-transform`}>
-                    {area.icon}
+                {/* 1. Subtle Accent Header */}
+                <div className={`h-2 w-full ${area.color} opacity-80`} />
+                
+                {/* 2. Card Body */}
+                <div className="flex-1 p-4 md:p-4 flex flex-col relative z-10">
+                  {/* Research Area Image Replacement for Icon */}
+                  <div className="w-full aspect-video rounded-xl overflow-hidden mb-5 border border-slate-100 group-hover:shadow-lg transition-all duration-500 relative">
+                    <Image 
+                      src={`/images/image${18 + (i % 23)}.png`} 
+                      alt={area.title} 
+                      fill 
+                      className="object-cover group-hover:scale-110 transition-transform duration-1000" 
+                    />
+                    <div className={`absolute inset-0 ${area.color} opacity-10`} />
                   </div>
                   
-                  {/* Title Area */}
+                  {/* Research Area Title */}
                   <div className="flex-1">
-                    <h4 className="text-[14px] md:text-2xl font-black text-slate-900 leading-tight tracking-tight mb-4 group-hover:text-blue-600 transition-colors">
+                    <h4 className="text-xl font-bold text-slate-900 leading-snug tracking-tight mb-4 group-hover:text-blue-700 transition-colors">
                       {area.title}
                     </h4>
-                  </div>
-                  
-                  {/* Footer Decoration */}
-                  <div className="mt-auto">
-                    <div className={`h-1.5 w-10 bg-gradient-to-r ${area.color} rounded-full group-hover:w-full transition-all duration-700`} />
-                    <p className="text-[9px] font-black uppercase tracking-[0.35em] text-slate-300 mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      Academic Excellence
-                    </p>
+                    <div className="w-8 h-1 bg-slate-200 rounded-full group-hover:w-16 group-hover:bg-blue-600 transition-all duration-500" />
                   </div>
                 </div>
-
-                {/* Subtle Glow (Hover) */}
-                <div className="absolute inset-0 border-2 border-transparent group-hover:border-blue-500/10 rounded-[2rem] md:rounded-[3rem] pointer-events-none transition-all" />
               </div>
             ))}
           </div>
