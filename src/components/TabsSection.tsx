@@ -151,28 +151,31 @@ export default function TabsSection() {
           </p>
         </div>
 
-        {/* ─── Tab Navigation ─── */}
-        <div className="flex flex-wrap justify-center gap-4 mb-20 pb-4 border-b border-slate-100 sticky top-0 bg-[#fcfdfd]/80 backdrop-blur-md z-40">
-          {[
-            { id: "objectives", label: "Objectives" },
-            { id: "vision", label: "Vision" },
-            { id: "mission", label: "Mission" },
-            { id: "courses", label: "Courses" },
-            { id: "phd", label: "Ph.D. Programme" },
-            { id: "advisors", label: "Advisors" }
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-8 py-3 rounded-full text-xs font-black uppercase tracking-[0.2em] transition-all duration-300
-                ${activeTab === tab.id 
-                  ? "bg-blue-600 text-white shadow-lg shadow-blue-500/20 scale-105" 
-                  : "bg-white text-slate-500 hover:text-blue-600 hover:bg-blue-50 border border-slate-100"}`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+          {/* ─── Tab Navigation ─── */}
+          <div className="flex flex-wrap justify-center gap-8 mb-20 sticky top-0 bg-[#fcfdfd]/95 backdrop-blur-md z-40 border-b border-slate-100">
+            {[
+              { id: "objectives", label: "Objectives" },
+              { id: "vision", label: "Vision" },
+              { id: "mission", label: "Mission" },
+              { id: "courses", label: "Courses" },
+              { id: "phd", label: "Ph.D. Programme" },
+              { id: "advisors", label: "Advisors" }
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`pb-4 px-2 text-[14px] font-black tracking-[0.25em] transition-all duration-300 relative group
+                  ${activeTab === tab.id 
+                    ? "text-blue-700" 
+                    : "text-slate-400 hover:text-slate-900"}`}
+              >
+                {tab.label}
+                <span className={`absolute bottom-0 left-0 h-0.5 bg-blue-600 transition-all duration-500
+                  ${activeTab === tab.id ? "w-full" : "w-0 group-hover:w-full"}`} 
+                />
+              </button>
+            ))}
+          </div>
 
         {/* ─── Objectives ─── */}
         {activeTab === "objectives" && (
