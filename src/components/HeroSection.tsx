@@ -92,22 +92,6 @@ export default function HeroSection() {
   return (
     <div className="relative min-h-screen bg-[#fcfdfd] font-sans overflow-hidden">
 
-      {/* ─── Navigation (Initial Navbar Restored) ─── */}
-      {/* ─── Navigation (Commented Out per Request) ───
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 md:px-12 py-4 flex items-center justify-between
-        ${isScrolled ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100" : "bg-transparent"}`}
-      >
-        ...
-      </header>
-      */}
-
-      {/* ─── Decorative Corner Brackets (Institutional Look) ─── */}
-      <div className="absolute top-24 md:top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-slate-200 pointer-events-none opacity-50" />
-      <div className="absolute top-24 md:top-8 right-8 w-12 h-12 border-t-2 border-r-2 border-slate-200 pointer-events-none opacity-50" />
-      <div className="absolute bottom-8 left-8 w-12 h-12 border-b-2 border-l-2 border-slate-200 pointer-events-none opacity-50" />
-      <div className="absolute bottom-8 right-8 w-12 h-12 border-b-2 border-r-2 border-slate-200 pointer-events-none opacity-50" />
-
       {/* ─── Hero Title Section ─── */}
       <div className="relative pt-40 md:pt-48 pb-12 px-6 text-center z-10 max-w-6xl mx-auto">
 

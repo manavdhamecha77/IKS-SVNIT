@@ -146,13 +146,13 @@ export default function TabsSection() {
 
         {/* ─── Introductory Text ─── */}
         <div className="text-center mb-16">
-          <p className="text-slate-700 text-xl md:text-2xl font-semibold leading-relaxed max-w-4xl mx-auto">
+          <p className="text-slate-700 text-lg md:text-xl font-medium leading-relaxed max-w-4xl mx-auto">
             The <span className="text-blue-600 font-black">Centre for Indian Knowledge Systems and Holistic Education</span> is a multidisciplinary hub for research on all aspects of Indian Knowledge Systems.
           </p>
         </div>
 
           {/* ─── Tab Navigation ─── */}
-          <div className="flex flex-wrap justify-center gap-8 mb-20 sticky top-0 bg-[#fcfdfd]/95 backdrop-blur-md z-40 border-b border-slate-100">
+          <div className="flex flex-wrap justify-center gap-8 mb-20 border-b border-slate-100">
             {[
               { id: "objectives", label: "Objectives" },
               { id: "vision", label: "Vision" },
@@ -192,7 +192,7 @@ export default function TabsSection() {
                   <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 font-black flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-all">
                     {i + 1}
                   </div>
-                  <p className="text-slate-600 text-lg font-medium leading-relaxed">{obj}</p>
+                  <p className="text-slate-700 text-lg md:text-xl font-medium leading-relaxed">{obj}</p>
                 </div>
               ))}
             </div>
@@ -203,7 +203,7 @@ export default function TabsSection() {
         {activeTab === "vision" && (
           <div id="vision" className="mb-32 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <SectionTitle gradient="from-blue-600 to-blue-400">Vision</SectionTitle>
-            <p className="text-xl md:text-2xl font-semibold text-slate-800 leading-relaxed max-w-4xl">
+            <p className="text-lg md:text-xl font-medium text-slate-700 leading-relaxed max-w-4xl">
               Establishing SVNIT Surat as a global frontier leader in disseminating{" "}
               <span className="text-blue-600 font-black">Indian Knowledge Systems</span> for Holistic Education, rooted in the philosophy of{" "}
               <span className="font-kurale italic text-slate-900 drop-shadow-none">
@@ -216,7 +216,7 @@ export default function TabsSection() {
         {activeTab === "mission" && (
           <div id="mission" className="mb-32 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <SectionTitle gradient="from-blue-600 to-indigo-600">Mission</SectionTitle>
-            <p className="text-xl md:text-2xl font-semibold text-slate-800 leading-relaxed max-w-4xl">
+            <p className="text-lg md:text-xl font-medium text-slate-700 leading-relaxed max-w-4xl">
               Facilitating a journey from <span className="text-blue-600 font-black">Head to Heart</span> by integrating profound ancient wisdom with modern education for integrated advancement.
             </p>
           </div>
@@ -226,7 +226,7 @@ export default function TabsSection() {
         {activeTab === "courses" && (
           <div id="courses" className="mb-32 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <SectionTitle gradient="from-blue-700 to-indigo-600">Academic Courses</SectionTitle>
-            <p className="text-slate-700 text-xl md:text-2xl font-semibold leading-relaxed max-w-4xl">
+            <p className="text-lg md:text-xl font-medium text-slate-700 leading-relaxed max-w-4xl">
               The centre proposes to offer <span className="text-blue-600 font-black">courses (credit as well as non-credit)</span> to be taught jointly by <span className="text-blue-900">eminent experts invited from various parts of the country</span>, along with faculty members from SVNIT Surat, providing students a rare opportunity for deep interactive engagement.
             </p>
           </div>
