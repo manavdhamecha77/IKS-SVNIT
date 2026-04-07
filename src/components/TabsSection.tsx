@@ -38,7 +38,7 @@ const phdAreas = [
     )
   },
   {
-    title: "Integrative studies on the Levels of Existence",
+    title: "Integrative Studies on the Levels of Existence",
     color: "bg-indigo-600",
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -95,6 +95,7 @@ const phdAreas = [
 
 export default function TabsSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const [activeTab, setActiveTab] = useState("objectives");
   const [galleryPage, setGalleryPage] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const [imagesPerPage, setImagesPerPage] = useState(8);
@@ -135,39 +136,71 @@ export default function TabsSection() {
       <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-none mb-2">
         {children}
       </h2>
-      {subtitle && <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">{subtitle}</p>}
+      {subtitle && <p className="text-slate-400 font-bold tracking-widest text-xs">{subtitle}</p>}
     </div>
   );
 
   return (
-    <section ref={sectionRef} className="bg-[#fcfdfd] py-24">
+    <section ref={sectionRef} className="bg-[#fcfdfd] py-12">
       <div className={`max-w-6xl mx-auto px-6 relative transition-all duration-1000 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"}`}>
 
-        {/* ─── Objectives ─── */}
-        <div id="objectives" className="mb-32 scroll-mt-32">
-          <SectionTitle gradient="from-blue-600 to-indigo-600">Objectives</SectionTitle>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              "Technical hub for Ph.D. research in ancient indigenous knowledge and ancient wisdom.",
-              "Disseminate knowledge for innovations and diverse societal applications.",
-              "Offer credit and non-credit courses for holistic student growth.",
-              "Spread wellness-focused knowledge to the global general public."
-            ].map((obj, i) => (
-              <div key={i} className="group p-8 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-500 flex gap-6 items-start hover:-translate-y-1">
-                <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 font-black flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                  {i + 1}
-                </div>
-                <p className="text-slate-600 text-lg font-medium leading-relaxed">{obj}</p>
-              </div>
-            ))}
-          </div>
+        {/* ─── Introductory Text ─── */}
+        <div className="text-center mb-16">
+          <p className="text-slate-700 text-xl md:text-2xl font-semibold leading-relaxed max-w-4xl mx-auto">
+            The <span className="text-blue-600 font-black">Centre for Indian Knowledge Systems and Holistic Education</span> is a multidisciplinary hub for research on all aspects of Indian Knowledge Systems.
+          </p>
         </div>
 
+        {/* ─── Tab Navigation ─── */}
+        <div className="flex flex-wrap justify-center gap-4 mb-20 pb-4 border-b border-slate-100 sticky top-0 bg-[#fcfdfd]/80 backdrop-blur-md z-40">
+          {[
+            { id: "objectives", label: "Objectives" },
+            { id: "vision", label: "Vision" },
+            { id: "mission", label: "Mission" },
+            { id: "courses", label: "Courses" },
+            { id: "phd", label: "Ph.D. Programme" },
+            { id: "advisors", label: "Advisors" }
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-8 py-3 rounded-full text-xs font-black uppercase tracking-[0.2em] transition-all duration-300
+                ${activeTab === tab.id 
+                  ? "bg-blue-600 text-white shadow-lg shadow-blue-500/20 scale-105" 
+                  : "bg-white text-slate-500 hover:text-blue-600 hover:bg-blue-50 border border-slate-100"}`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* ─── Objectives ─── */}
+        {activeTab === "objectives" && (
+          <div id="objectives" className="mb-32 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <SectionTitle gradient="from-blue-600 to-indigo-600">Objectives</SectionTitle>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                "Technical hub for Ph.D. research in ancient indigenous knowledge and ancient wisdom.",
+                "Disseminate knowledge for innovations and diverse societal applications.",
+                "Offer credit and non-credit courses for holistic student growth.",
+                "Spread wellness-focused knowledge to the global general public."
+              ].map((obj, i) => (
+                <div key={i} className="group p-8 bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-500 flex gap-6 items-start hover:-translate-y-1">
+                  <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 font-black flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                    {i + 1}
+                  </div>
+                  <p className="text-slate-600 text-lg font-medium leading-relaxed">{obj}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* ─── Vision & Mission ─── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-32">
-          <div id="vision" className="scroll-mt-32 p-10 bg-white rounded-[3rem] border-2 border-blue-50 shadow-xl relative overflow-hidden flex flex-col justify-center group">
+        {activeTab === "vision" && (
+          <div id="vision" className="mb-32 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <SectionTitle gradient="from-blue-600 to-blue-400">Vision</SectionTitle>
-            <p className="text-xl md:text-2xl font-semibold text-slate-800 leading-relaxed relative z-10">
+            <p className="text-xl md:text-2xl font-semibold text-slate-800 leading-relaxed max-w-4xl">
               Establishing SVNIT Surat as a global frontier leader in disseminating{" "}
               <span className="text-blue-600 font-black">Indian Knowledge Systems</span> for Holistic Education, rooted in the philosophy of{" "}
               <span className="font-kurale italic text-slate-900 drop-shadow-none">
@@ -175,115 +208,70 @@ export default function TabsSection() {
               </span>.
             </p>
           </div>
+        )}
 
-          <div id="mission" className="scroll-mt-32 p-10 bg-white rounded-[3rem] border-2 border-amber-100 shadow-xl relative overflow-hidden flex flex-col justify-center">
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-amber-50 rounded-tl-full pointer-events-none" />
+        {activeTab === "mission" && (
+          <div id="mission" className="mb-32 animate-in fade-in slide-in-from-bottom-4 duration-700">
             <SectionTitle gradient="from-blue-600 to-indigo-600">Mission</SectionTitle>
-            <p className="text-xl md:text-2xl font-semibold text-slate-800 leading-relaxed">
+            <p className="text-xl md:text-2xl font-semibold text-slate-800 leading-relaxed max-w-4xl">
               Facilitating a journey from <span className="text-blue-600 font-black">Head to Heart</span> by integrating profound ancient wisdom with modern education for integrated advancement.
             </p>
           </div>
-        </div>
+        )}
 
-        {/* ─── Courses ───
-        <div id="courses" className="mb-32 scroll-mt-32">
-          <div className="flex flex-col md:flex-row gap-12 items-center">
-            <div className="flex-1">
-              <SectionTitle gradient="from-emerald-500 to-teal-500" subtitle="Educational Programs">Courses</SectionTitle>
-              <p className="text-slate-600 text-xl font-medium leading-relaxed mb-8">
-                Taught jointly by invited eminent experts and SVNIT faculty, providing students a rare opportunity for deep interactive engagement.
-              </p>
-              <button className="px-8 py-3 bg-blue-700 text-white font-black rounded-full hover:bg-blue-600 hover:scale-105 active:scale-95 transition-all shadow-lg shadow-blue-500/20">VIEW CATALOG</button>
-            </div>
-            <div className="flex-1 grid grid-cols-2 gap-4 w-full">
-              <div className="aspect-square relative overflow-hidden rounded-[2rem] border border-emerald-100 shadow-xl group">
-                <Image 
-                  src="/images/image16.png" 
-                  alt="SVNIT Course Gallery 1" 
-                  fill 
-                  className="object-cover group-hover:scale-110 transition-transform duration-700" 
-                />
-              </div>
-              <div className="aspect-square relative overflow-hidden rounded-[2rem] border border-teal-100 shadow-xl group">
-                <Image 
-                  src="/images/image17.png" 
-                  alt="SVNIT Course Gallery 2" 
-                  fill 
-                  className="object-cover group-hover:scale-110 transition-transform duration-700 delay-150" 
-                />
-              </div>
-            </div>
+        {/* ─── Courses & Expert Interaction ─── */}
+        {activeTab === "courses" && (
+          <div id="courses" className="mb-32 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <SectionTitle gradient="from-blue-700 to-indigo-600">Academic Courses</SectionTitle>
+            <p className="text-slate-700 text-xl md:text-2xl font-semibold leading-relaxed max-w-4xl">
+              The centre proposes to offer <span className="text-blue-600 font-black">courses (credit as well as non-credit)</span> to be taught jointly by <span className="text-blue-900">eminent experts invited from various parts of the country</span>, along with faculty members from SVNIT Surat, providing students a rare opportunity for deep interactive engagement.
+            </p>
           </div>
-        </div> */}
+        )}
 
         {/* ─── Ph.D. Programme ─── */}
-        <div id="phd" className="mb-32 scroll-mt-32">
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 px-4 md:px-6">
-            <SectionTitle gradient="from-blue-700 to-amber-500">Ph.D. Programme</SectionTitle>
-          </div>
+        {activeTab === "phd" && (
+          <div id="phd" className="mb-32 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <div className="flex flex-col mb-12 px-4 md:px-6">
+              <SectionTitle gradient="from-blue-700 to-amber-500" subtitle="Broad Research Areas include (but not limited to)">Ph.D. Programme</SectionTitle>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-            {phdAreas.map((area, i) => (
-              <div
-                key={i}
-                className="group relative flex flex-col bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-600/30 transition-all duration-500 overflow-hidden"
-              >
-                {/* 2. Card Body */}
-                <div className="flex-1 p-10 flex flex-col relative z-10">
-                  {/* Research Area Title */}
-                  <div className="flex-1">
-                    <h4 className="text-xl font-bold text-slate-900 leading-snug tracking-tight group-hover:text-blue-700 transition-colors">
-                      {area.title}
-                    </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+              {phdAreas.map((area, i) => (
+                <div
+                  key={i}
+                  className="group relative flex flex-col bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-600/30 transition-all duration-500 overflow-hidden"
+                >
+                  <div className="flex-1 p-10 flex flex-col relative z-10">
+                    <div className="flex-1">
+                      <h4 className="text-xl font-bold text-slate-900 leading-snug tracking-tight group-hover:text-blue-700 transition-colors">
+                        {area.title}
+                      </h4>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ─── Gallery ─── */}
-        {/* <div id="gallery" className="mb-32 scroll-mt-32">
-          <div className="flex items-end justify-between mb-12">
-            <SectionTitle gradient="from-rose-500 to-pink-500" subtitle="Moments & Memories">Gallery</SectionTitle>
-            <div className="flex gap-4 mb-12">
-              <button onClick={prevGallery} className="w-12 h-12 rounded-2xl border-2 border-slate-200 flex items-center justify-center text-slate-400 hover:border-rose-500 hover:text-rose-500 transition-all font-black">←</button>
-              <button onClick={nextGallery} className="w-12 h-12 rounded-2xl border-2 border-slate-200 flex items-center justify-center text-slate-400 hover:border-rose-500 hover:text-rose-500 transition-all font-black">→</button>
+              ))}
             </div>
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {galleryImages.slice(galleryPage * imagesPerPage, (galleryPage + 1) * imagesPerPage).map((img, i) => (
-              <div key={i} className="aspect-square relative bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-2xl transition-all group overflow-hidden">
-                <Image 
-                  src={img.src} 
-                  alt={img.alt} 
-                  fill 
-                  className="object-cover group-hover:scale-110 transition-transform duration-700" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                  <p className="text-white text-[10px] font-black uppercase tracking-widest">{img.alt}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div> */}
+        )}
 
         {/* ─── Advisors ─── */}
-        <div id="advisors" className="scroll-mt-32">
-          <SectionTitle gradient="from-amber-500 to-orange-500">Advisors</SectionTitle>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="flex flex-col items-center group">
-                <div className="w-40 h-40 rounded-full bg-slate-100 border-4 border-white shadow-xl mb-6 overflow-hidden relative group-hover:scale-110 transition-transform duration-500">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent" />
+        {activeTab === "advisors" && (
+          <div id="advisors" className="mb-32 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <SectionTitle gradient="from-amber-500 to-orange-500">Advisors</SectionTitle>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="flex flex-col items-center group">
+                  <div className="w-40 h-40 rounded-full bg-slate-100 border-4 border-white shadow-xl mb-6 overflow-hidden relative group-hover:scale-110 transition-transform duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent" />
+                  </div>
+                  <div className="h-4 w-32 bg-slate-200 rounded-full mb-2 animate-pulse" />
+                  <div className="h-3 w-24 bg-slate-100 rounded-full animate-pulse delay-100" />
                 </div>
-                <div className="h-4 w-32 bg-slate-200 rounded-full mb-2 animate-pulse" />
-                <div className="h-3 w-24 bg-slate-100 rounded-full animate-pulse delay-100" />
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
       </div>
     </section>
