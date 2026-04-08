@@ -38,7 +38,7 @@ export default function TabsSection() {
   return (
     <>
       {/* ORNATE DIVIDER */}
-      <div className="text-center py-12 bg-light-sand overflow-hidden" id="about">
+      <div className="text-center pt-12 bg-light-sand overflow-hidden" id="about">
         <svg viewBox="0 0 320 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[320px] max-w-[90vw] inline-block">
           <line x1="0" y1="20" x2="120" y2="20" stroke="#C8501A" strokeWidth="0.75" strokeOpacity="0.5" />
           <circle cx="150" cy="20" r="6" fill="none" stroke="#C8501A" strokeWidth="1.2" />
@@ -58,7 +58,7 @@ export default function TabsSection() {
       </div>
 
       {/* TABS SECTION */}
-      <section className="py-20 px-[8vw] bg-ivory" id="tabs-section">
+      <section className="pt-8 pb-20 px-[8vw] bg-ivory" id="tabs-section">
         {/* <p className="text-[0.9rem] sm:text-[1rem] font-medium tracking-[0.2em] uppercase text-saffron mb-4">
           Discover
         </p> */}
