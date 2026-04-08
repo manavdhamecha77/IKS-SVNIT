@@ -1,21 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Kurale } from "next/font/google";
+import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 
-const kurale = Kurale({
-  weight: "400",
-  subsets: ["latin", "devanagari"],
-  variable: "--font-kurale",
+const cormorant = Cormorant_Garamond({
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-cormorant",
+  style: ["normal", "italic"]
 });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const jost = Jost({
+  weight: ["300", "400", "500", "600"],
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-jost",
 });
 
 export const metadata: Metadata = {
@@ -32,9 +29,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${kurale.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${jost.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+      </body>
     </html>
   );
 }
+

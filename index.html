@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centre for Indian Knowledge Systems & Holistic Education</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #C8501A;
+    --deep-navy: #0C1B3A;
+    --gold: #D4A017;
+    --ivory: #FAF7F0;
+    --warm-brown: #7A4A2A;
+    --light-sand: #F0EBE0;
+    --text-dark: #1A1208;
+    --text-mid: #5A4A35;
+    --text-light: #9A8A75;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--ivory);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(12,27,58,0.96);
+    backdrop-filter: blur(12px);
+    padding: 0 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+    border-bottom: 1px solid rgba(212,160,23,0.25);
+  }
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-weight: 600; letter-spacing: 0.05em;
+    color: #FAF7F0;
+    text-decoration: none;
+    line-height: 1.3;
+  }
+  .nav-brand span { color: var(--gold); display: block; font-size: 0.7rem; font-weight: 300; letter-spacing: 0.15em; font-family: 'Jost', sans-serif; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: rgba(250,247,240,0.7); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { width: 24px; height: 1.5px; background: #FAF7F0; display: block; transition: 0.3s; }
+  @media (max-width: 768px) {
+    .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: rgba(12,27,58,0.98); flex-direction: column; padding: 1.5rem 5vw; gap: 1.2rem; }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100svh;
+    background: var(--deep-navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A017' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 5vw 6rem 8vw;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); display: inline-block; }
+  .hero-sanskrit {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300; font-style: italic;
+    color: rgba(250,247,240,0.5);
+    line-height: 1.4; margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 600; line-height: 1.15;
+    color: #FAF7F0; margin-bottom: 1.8rem;
+  }
+  .hero-title em { color: var(--saffron); font-style: normal; }
+  .hero-subtitle {
+    font-size: 0.95rem; font-weight: 300; line-height: 1.8;
+    color: rgba(250,247,240,0.65);
+    max-width: 440px; margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--saffron); color: #FAF7F0;
+    padding: 0.85rem 2rem; text-decoration: none;
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .hero-cta:hover { background: #A8401A; transform: translateX(4px); }
+  .hero-cta::after { content: '→'; }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute; top: 0; left: 0; bottom: 0; width: 120px; z-index: 1;
+    background: linear-gradient(to right, var(--deep-navy), transparent);
+  }
+  .hero-right img {
+    width: 100%; height: 100%; object-fit: cover; opacity: 0.5;
+    filter: sepia(30%);
+  }
+  .hero-ornament {
+    position: absolute; bottom: 3rem; left: 5vw; z-index: 2;
+    display: flex; gap: 1.5rem; align-items: center;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: var(--gold); display: block; line-height: 1; }
+  .hero-stat-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(250,247,240,0.5); margin-top: 4px; }
+  .hero-stat-div { width: 1px; height: 40px; background: rgba(212,160,23,0.3); }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 7rem 6vw 4rem; }
+    .hero-right { height: 280px; }
+    .hero-ornament { display: none; }
+  }
+
+  /* ── DIVIDER ── */
+  .ornate-divider {
+    text-align: center; padding: 3rem 0;
+    background: var(--light-sand);
+    overflow: hidden;
+  }
+  .ornate-divider svg { width: 320px; max-width: 90vw; }
+
+  /* ── ABOUT STRIP ── */
+  .about-strip {
+    background: var(--light-sand);
+    padding: 2rem 8vw 4rem;
+    display: flex; align-items: center; gap: 3rem;
+    flex-wrap: wrap;
+  }
+  .about-logo {
+    width: 80px; height: 80px; object-fit: contain; flex-shrink: 0;
+  }
+  .about-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 400; line-height: 1.7;
+    color: var(--text-mid);
+    flex: 1; min-width: 260px;
+  }
+  .about-text strong { color: var(--deep-navy); font-weight: 600; }
+
+  /* ── TABS SECTION ── */
+  .tabs-section {
+    padding: 5rem 8vw;
+    background: var(--ivory);
+  }
+  .section-label {
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--saffron); margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--saffron); }
+
+  .tabs-nav {
+    display: flex; gap: 0; flex-wrap: wrap;
+    border-bottom: 1px solid rgba(122,74,42,0.2);
+    margin-bottom: 3rem;
+  }
+  .tab-btn {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-light);
+    background: none; border: none; cursor: pointer;
+    padding: 0.9rem 1.5rem;
+    position: relative; transition: color 0.2s;
+  }
+  .tab-btn::after {
+    content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px;
+    background: var(--saffron); transform: scaleX(0); transition: transform 0.25s;
+  }
+  .tab-btn:hover { color: var(--text-dark); }
+  .tab-btn.active { color: var(--saffron); }
+  .tab-btn.active::after { transform: scaleX(1); }
+
+  .tab-panel { display: none; animation: fadeUp 0.4s ease; }
+  .tab-panel.active { display: block; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Objectives */
+  .objectives-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+  }
+  .obj-card {
+    background: #fff;
+    border: 1px solid rgba(122,74,42,0.12);
+    padding: 2rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .obj-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(12,27,58,0.08); }
+  .obj-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+    background: var(--saffron);
+  }
+  .obj-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 700; line-height: 1;
+    color: rgba(200,80,26,0.12);
+    position: absolute; top: 1rem; right: 1.2rem;
+  }
+  .obj-card p { font-size: 0.95rem; line-height: 1.7; color: var(--text-mid); position: relative; z-index: 1; }
+
+  /* Vision */
+  .vision-block {
+    max-width: 720px;
+    background: var(--deep-navy);
+    padding: 3.5rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .vision-block::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14rem; line-height: 1; font-weight: 700;
+    color: rgba(212,160,23,0.1);
+    position: absolute; top: -2rem; left: 2rem; pointer-events: none;
+  }
+  .vision-block p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 300; font-style: italic; line-height: 1.8;
+    color: rgba(250,247,240,0.9); position: relative; z-index: 1;
+  }
+  .vision-block p strong { color: var(--gold); font-style: normal; font-weight: 600; }
+  @media (max-width: 600px) { .vision-block { padding: 2.5rem 2rem; } }
+
+  /* Mission */
+  .mission-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .mission-text h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 600; color: var(--deep-navy);
+    margin-bottom: 1.2rem; line-height: 1.3;
+  }
+  .mission-text p { font-size: 0.95rem; line-height: 1.8; color: var(--text-mid); margin-bottom: 1rem; }
+  .mission-highlight {
+    background: var(--saffron);
+    color: #FAF7F0;
+    padding: 2rem;
+    position: relative;
+  }
+  .mission-highlight::before {
+    content: '☀';
+    font-size: 4rem; line-height: 1;
+    opacity: 0.15;
+    position: absolute; bottom: 1rem; right: 1rem;
+  }
+  .mission-highlight p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; line-height: 1.7; }
+  @media (max-width: 650px) { .mission-layout { grid-template-columns: 1fr; } }
+
+  /* Ph.D. */
+  .phd-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem;
+  }
+  .phd-card {
+    border: 1px solid rgba(122,74,42,0.15);
+    padding: 1.5rem;
+    background: #fff;
+    cursor: default;
+    transition: background 0.2s, border-color 0.2s;
+    display: flex; align-items: flex-start; gap: 0.8rem;
+  }
+  .phd-card:hover { background: var(--deep-navy); border-color: transparent; }
+  .phd-card:hover .phd-title { color: #FAF7F0; }
+  .phd-card:hover .phd-dot { background: var(--gold); }
+  .phd-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--saffron); margin-top: 8px; flex-shrink: 0; transition: background 0.2s; }
+  .phd-title { font-size: 0.9rem; line-height: 1.5; color: var(--text-dark); transition: color 0.2s; }
+  .phd-note { font-size: 0.8rem; color: var(--text-light); font-style: italic; margin-bottom: 1.5rem; }
+
+  /* Advisors */
+  .advisors-placeholder {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-style: italic; color: var(--text-light);
+    padding: 3rem; border: 1px dashed rgba(122,74,42,0.3); text-align: center;
+  }
+
+  /* Courses */
+  .courses-note {
+    background: rgba(212,160,23,0.08);
+    border-left: 3px solid var(--gold);
+    padding: 1.2rem 1.5rem; margin-bottom: 2rem;
+    font-size: 0.9rem; color: var(--text-mid); line-height: 1.7;
+  }
+  .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+  .course-card {
+    background: var(--deep-navy);
+    padding: 1.8rem 1.5rem;
+    transition: background 0.2s;
+  }
+  .course-card:hover { background: #162850; }
+  .course-type {
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 0.5rem;
+  }
+  .course-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: rgba(250,247,240,0.9); line-height: 1.5; }
+
+  /* ── PHOTO STRIP ── */
+  .photo-strip {
+    height: 320px;
+    background: var(--deep-navy);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .photo-strip-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(12,27,58,0.85), rgba(200,80,26,0.4));
+    z-index: 1;
+  }
+  .photo-strip-text {
+    position: relative; z-index: 2; text-align: center; padding: 0 2rem;
+  }
+  .photo-strip-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 300; font-style: italic;
+    color: #FAF7F0;
+    line-height: 1.4; margin-bottom: 0.5rem;
+  }
+  .photo-strip-text h2 strong { font-weight: 700; color: var(--gold); font-style: normal; }
+  .photo-strip-text p { font-size: 0.9rem; color: rgba(250,247,240,0.65); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ── INSTITUTE FOOTER ── */
+  footer {
+    background: #080F1F;
+    color: rgba(250,247,240,0.55);
+    padding: 3rem 8vw 2rem;
+  }
+  .footer-inner {
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .footer-brand h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600; color: #FAF7F0;
+    margin-bottom: 0.4rem;
+  }
+  .footer-brand p { font-size: 0.82rem; line-height: 1.7; margin-top: 0.8rem; }
+  .footer-col h4 { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-col li { font-size: 0.82rem; cursor: pointer; transition: color 0.2s; }
+  .footer-col li:hover { color: #FAF7F0; }
+  .footer-bottom { display: flex; justify-content: space-between; padding-top: 1.5rem; font-size: 0.75rem; flex-wrap: wrap; gap: 0.5rem; }
+  .footer-bottom span { color: var(--gold); }
+  @media (max-width: 700px) {
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; }
+  }
+
+  /* ── SCROLL ANIMATION ── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── MOBILE TAB SCROLL ── */
+  @media (max-width: 600px) {
+    .tabs-nav { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
+    .tab-btn { white-space: nowrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    CIKS<span>SVNIT Surat</span>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#tabs-section">Explore</a></li>
+    <li><a href="#phd">Ph.D.</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">SVNIT Surat</div>
+    <p class="hero-sanskrit">भारतीय ज्ञान परंपरा एवं समग्र शिक्षा केन्द्र</p>
+    <h1 class="hero-title">Centre for <em>Indian Knowledge</em> Systems &amp; Holistic Education</h1>
+    <p class="hero-subtitle">A multidisciplinary hub bridging ancient wisdom and modern research — where the journey moves from head to heart.</p>
+    <a href="#tabs-section" class="hero-cta">Explore the Centre</a>
+    <div class="hero-ornament">
+      <div class="hero-stat"><span class="hero-stat-num">9</span><span class="hero-stat-label">Research Areas</span></div>
+      <div class="hero-stat-div"></div>
+      <div class="hero-stat"><span class="hero-stat-num">Ph.D</span><span class="hero-stat-label">Programme</span></div>
+      <div class="hero-stat-div"></div>
+      <div class="hero-stat"><span class="hero-stat-num">IKS</span><span class="hero-stat-label">Credit Courses</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=900&q=80" alt="Ayurvedic herbs representing Indian Knowledge Systems" loading="lazy">
+  </div>
+</section>
+
+<!-- ORNATE DIVIDER -->
+<div class="ornate-divider" id="about">
+  <svg viewBox="0 0 320 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="0" y1="20" x2="120" y2="20" stroke="#C8501A" stroke-width="0.75" stroke-opacity="0.5"/>
+    <circle cx="150" cy="20" r="6" fill="none" stroke="#C8501A" stroke-width="1.2"/>
+    <circle cx="150" cy="20" r="2.5" fill="#C8501A" fill-opacity="0.5"/>
+    <circle cx="130" cy="20" r="2" fill="#D4A017" fill-opacity="0.5"/>
+    <circle cx="170" cy="20" r="2" fill="#D4A017" fill-opacity="0.5"/>
+    <line x1="200" y1="20" x2="320" y2="20" stroke="#C8501A" stroke-width="0.75" stroke-opacity="0.5"/>
+    <path d="M140 20 L150 12 L160 20 L150 28 Z" stroke="#D4A017" stroke-width="0.75" fill="none" opacity="0.6"/>
+  </svg>
+</div>
+
+<!-- ABOUT STRIP -->
+<div class="about-strip reveal">
+  <svg class="about-logo" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="40" cy="40" r="36" stroke="#0C1B3A" stroke-width="1.5"/>
+    <circle cx="40" cy="40" r="28" stroke="#D4A017" stroke-width="0.75" stroke-dasharray="4 3"/>
+    <path d="M40 16 L43 30 L40 28 L37 30 Z" fill="#C8501A" opacity="0.8"/>
+    <path d="M40 64 L43 50 L40 52 L37 50 Z" fill="#C8501A" opacity="0.8"/>
+    <path d="M16 40 L30 37 L28 40 L30 43 Z" fill="#C8501A" opacity="0.8"/>
+    <path d="M64 40 L50 37 L52 40 L50 43 Z" fill="#C8501A" opacity="0.8"/>
+    <circle cx="40" cy="40" r="8" fill="none" stroke="#0C1B3A" stroke-width="1.5"/>
+    <circle cx="40" cy="40" r="3" fill="#D4A017"/>
+  </svg>
+  <p class="about-text">
+    The <strong>Centre for Indian Knowledge Systems and Holistic Education</strong> is a multidisciplinary hub for research on all aspects of Indian Knowledge Systems — rooted at SVNIT Surat, reaching the world.
+  </p>
+</div>
+
+<!-- TABS SECTION -->
+<section class="tabs-section" id="tabs-section">
+  <p class="section-label">Discover</p>
+
+  <nav class="tabs-nav" role="tablist">
+    <button class="tab-btn active" data-tab="objectives" role="tab">Objectives</button>
+    <button class="tab-btn" data-tab="vision" role="tab">Vision</button>
+    <button class="tab-btn" data-tab="mission" role="tab">Mission</button>
+    <button class="tab-btn" data-tab="courses" role="tab">Courses</button>
+    <button class="tab-btn" data-tab="phd" role="tab">Ph.D. Programme</button>
+    <button class="tab-btn" data-tab="advisors" role="tab">Advisors</button>
+  </nav>
+
+  <!-- OBJECTIVES -->
+  <div class="tab-panel active" id="tab-objectives">
+    <div class="objectives-grid reveal">
+      <div class="obj-card">
+        <span class="obj-num">01</span>
+        <p>To offer a unique technical hub for research on India's scientific and cultural heritage, leading to the Doctoral Degree — Ph.D. in Indigenous Knowledge and Ancient Wisdom.</p>
+      </div>
+      <div class="obj-card">
+        <span class="obj-num">02</span>
+        <p>To disseminate Indigenous knowledge for better perception, innovations and diverse societal applications across disciplines and communities.</p>
+      </div>
+      <div class="obj-card">
+        <span class="obj-num">03</span>
+        <p>To design and offer credit and non-credit courses related to IKS for Holistic Education — fostering overall growth and wellbeing of stakeholders.</p>
+      </div>
+      <div class="obj-card">
+        <span class="obj-num">04</span>
+        <p>To serve the society by spreading Indigenous knowledge to the global general public for overall wellness and harmonious living.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VISION -->
+  <div class="tab-panel" id="tab-vision">
+    <div class="vision-block reveal">
+      <p>To establish <strong>SVNIT Surat</strong> as a frontier leader in disseminating Indian Knowledge Systems for Holistic Education — with the aspiration of harmony with existence and the feeling of <strong>Vasudhaiv Kutumbakam</strong>.</p>
+    </div>
+  </div>
+
+  <!-- MISSION -->
+  <div class="tab-panel" id="tab-mission">
+    <div class="mission-layout reveal">
+      <div class="mission-text">
+        <h3>Facilitating the Journey from Head to Heart</h3>
+        <p>Disseminating the profound ancient indigenous wisdom and integrating them into modern education for holistic advancement.</p>
+        <p>The Centre proposes to offer courses taught jointly by eminent experts invited from various parts of the country, along with faculty members from SVNIT Surat — providing students with a rare opportunity to listen to and interact with experts.</p>
+      </div>
+      <div class="mission-highlight">
+        <p>"Integrating profound ancient indigenous wisdom with modern education for complete human advancement — in harmony with the cosmos."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- COURSES -->
+  <div class="tab-panel" id="tab-courses">
+    <div class="courses-note reveal">
+      The Centre offers both <strong>credit courses</strong> and <strong>non-credit courses</strong> related to Indian Knowledge Systems, taught jointly by eminent experts from across India and SVNIT Surat faculty.
+    </div>
+    <div class="courses-grid reveal">
+      <div class="course-card"><p class="course-type">Credit</p><p class="course-name">Indian Knowledge Systems & Holistic Education</p></div>
+      <div class="course-card"><p class="course-type">Credit</p><p class="course-name">Yoga, Meditation & Scientific Studies</p></div>
+      <div class="course-card"><p class="course-type">Non-Credit</p><p class="course-name">Vedantic Science & Life Management</p></div>
+      <div class="course-card"><p class="course-type">Non-Credit</p><p class="course-name">Health, Wellbeing & Ancient Wisdom</p></div>
+      <div class="course-card"><p class="course-type">Open</p><p class="course-name">Wellness Knowledge for the General Public</p></div>
+    </div>
+  </div>
+
+  <!-- PHD -->
+  <div class="tab-panel" id="tab-phd">
+    <p class="phd-note reveal">Broad Research Areas include (but are not limited to)</p>
+    <div class="phd-grid reveal" id="phd">
+      <div class="phd-card"><div class="phd-dot"></div><p class="phd-title">Absolute Intelligence</p></div>
+      <div class="phd-card"><div class="phd-dot"></div><p class="phd-title">Health and Wellbeing</p></div>
+      <div class="phd-card"><div class="phd-dot"></div><p class="phd-title">Ancient Scriptures and Modern Research</p></div>
+      <div class="phd-card"><div class="phd-dot"></div><p class="phd-title">Integrative Studies on the Levels of Existence</p></div>
+      <div class="phd-card"><div class="phd-dot"></div><p class="phd-title">Scientific Studies on Yoga and Meditation</p></div>
+      <div class="phd-card"><div class="phd-dot"></div><p class="phd-title">Shrimad Bhagvad Gita in Current Context</p></div>
+      <div class="phd-card"><div class="phd-dot"></div><p class="phd-title">Singularity and Artificial Intelligence: Evolutionary Awakening</p></div>
+      <div class="phd-card"><div class="phd-dot"></div><p class="phd-title">Intelligent Integration of Education and Science in Light of Madhyasth Darshan</p></div>
+      <div class="phd-card"><div class="phd-dot"></div><p class="phd-title">Vedantic Science and Life Management</p></div>
+    </div>
+  </div>
+
+  <!-- ADVISORS -->
+  <div class="tab-panel" id="tab-advisors">
+    <div class="advisors-placeholder reveal">Advisor profiles to be added here.</div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <div class="photo-strip-overlay"></div>
+  <div class="photo-strip-text">
+    <h2>Ancient Wisdom, <strong>Modern Vision</strong></h2>
+    <p>Vasudhaiv Kutumbakam — The World is One Family</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>Centre for Indian Knowledge Systems</h3>
+      <p style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,160,23,0.7);">& Holistic Education · SVNIT Surat</p>
+      <p>A multidisciplinary research hub rooted in the scientific and cultural heritage of India, committed to holistic education and societal wellness.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li>Objectives</li><li>Vision</li><li>Mission</li>
+        <li>Courses</li><li>Ph.D. Programme</li><li>Advisors</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Institute</h4>
+      <ul>
+        <li>SVNIT Surat</li>
+        <li>Ichchhanath, Surat</li>
+        <li>Gujarat — 395007</li>
+        <li style="margin-top:0.5rem;">ciks@svnit.ac.in</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Centre for Indian Knowledge Systems — SVNIT Surat</span>
+    <span>सा विद्या या विमुक्तये</span>
+  </div>
+</footer>
+
+<script>
+  // TABS
+  const btns = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // SCROLL REVEAL
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,78 +1,72 @@
 "use client";
-import Image from "next/image";
 
 const footerLinks = [
   { id: "objectives", label: "Objectives" },
   { id: "vision", label: "Vision" },
   { id: "mission", label: "Mission" },
+  { id: "courses", label: "Courses" },
   { id: "phd", label: "Ph.D. Programme" },
   { id: "advisors", label: "Advisors" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="relative bg-slate-950 pt-24 pb-12 overflow-hidden border-t border-white/5 flex flex-col items-center text-center px-4">
-      
-      {/* Background Decorative Element */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-amber-500 to-blue-600 opacity-30" />
-      <div className="absolute -top-24 left-1/2 -translateX-1/2 w-[1000px] h-[500px] bg-blue-500/5 rounded-[100%] blur-[120px] pointer-events-none" />
-
-      {/* 1. Logo & Branding */}
-      <div className="mb-8 flex flex-col items-center">
-        <div className="relative w-20 h-20 md:w-28 md:h-28 mb-8 hover:scale-110 transition-transform duration-500 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <div className="absolute inset-0 bg-white rounded-full blur-2xl opacity-10" />
-          <Image
-            src="/logo/svnit.png"
-            alt="SVNIT Logo"
-            fill
-            className="object-contain"
-          />
-        </div>
-        
-        <h2 className="text-white text-xl md:text-3xl font-black tracking-tight mb-4 max-w-4xl leading-tight">
-          भारतीय ज्ञान परंपरा एवं समग्र शिक्षा केन्द्र
-        </h2>
-        <p className="text-blue-200/60 font-bold text-sm md:text-lg tracking-widest uppercase mb-8">
-          Centre for Indian Knowledge Systems & Holistic Education
-        </p>
-      </div>
-
-      {/* 3. Navigation Links */}
-      <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 mb-20 max-w-5xl">
-        {footerLinks.map((link) => (
-          <button
-            key={link.id}
-            onClick={() => {
-              document.getElementById(link.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-            }}
-            className="text-xs font-bold text-white/40 hover:text-amber-400 border-b border-transparent hover:border-amber-400/50 transition-all tracking-[0.2em]"
-          >
-            {link.label}
-          </button>
-        ))}
-      </div>
-
-      {/* 4. Bottom Legal / Copyright Area */}
-      <div className="w-full max-w-7xl pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6 px-10">
-        <p className="text-white/20 text-[10px] md:text-xs font-medium tracking-widest">
-          &copy; {new Date().getFullYear()} Center For IKSHE, SVNIT, Surat.
-        </p>
-        <div className="flex gap-8">
-          <a 
-            href="https://svnit.ac.in" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-white/20 text-[10px] md:text-xs font-medium tracking-widest uppercase hover:text-white/40 cursor-pointer transition-colors"
-          >
-            SVNIT Official
-          </a>
+    <>
+      {/* PHOTO STRIP */}
+      <div className="h-[320px] bg-deep-navy relative overflow-hidden flex items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-deep-navy/85 to-saffron/40 z-10" />
+        <div className="relative z-20 text-center px-8">
+          <h2 className="font-cormorant text-[clamp(1.8rem,4vw,3rem)] font-light italic text-[#FAF7F0] leading-[1.4] mb-2 border-none">
+            Ancient Wisdom, <strong className="font-bold text-gold not-italic">Modern Vision</strong>
+          </h2>
+          <p className="text-[0.9rem] text-ivory/65 tracking-[0.1em] uppercase">
+            Vasudhaiv Kutumbakam — The World is One Family
+          </p>
         </div>
       </div>
 
-      {/* Ambient Corners */}
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-amber-600/5 rounded-full blur-[100px] pointer-events-none" />
-      
-    </footer>
+      {/* FOOTER */}
+      <footer id="contact" className="bg-[#080F1F] text-[#FAF7F0]/55 px-[8vw] pt-12 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-8 md:gap-12 pb-10 border-b border-white/5">
+          <div className="flex flex-col">
+            <h3 className="font-cormorant text-[1.2rem] font-semibold text-[#FAF7F0] mb-1.5">
+              Centre for Indian Knowledge Systems
+            </h3>
+            <p className="text-[0.7rem] tracking-[0.12em] uppercase text-gold/70">
+              & Holistic Education · Sardar Vallabhbhai National Institute of Technology Surat
+            </p>
+          </div>
+          
+          <div className="flex flex-col">
+            <h4 className="text-[0.7rem] tracking-[0.15em] uppercase text-gold mb-4">Navigate</h4>
+            <ul className="flex flex-col gap-2 list-none">
+              {footerLinks.map((link) => (
+                <li 
+                  key={link.id} 
+                  className="text-[0.82rem] cursor-pointer transition-colors hover:text-[#FAF7F0]" 
+                  onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                >
+                  {link.label}
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div className="flex flex-col">
+            <h4 className="text-[0.7rem] tracking-[0.15em] uppercase text-gold mb-4">Institute</h4>
+            <ul className="flex flex-col gap-2 list-none">
+              <li className="text-[0.82rem]">SVNIT Surat</li>
+              <li className="text-[0.82rem]">Ichchhanath, Surat</li>
+              <li className="text-[0.82rem]">Gujarat, 395007</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row justify-between pt-6 text-[0.75rem] flex-wrap gap-2 text-gold">
+          <span>© {new Date().getFullYear()} Center For IKSHE, SVNIT, Surat.</span>
+          <span>सा विद्या या विमुक्तये</span>
+        </div>
+      </footer>
+    </>
   );
 }

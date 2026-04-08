@@ -1,172 +1,67 @@
 "use client";
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
-import gsap from "gsap";
+import { useState, useEffect } from "react";
 
 const slides = Array.from({ length: 41 }, (_, i) => ({
   id: i + 1,
   image: `/images/image${i + 1}.png`,
 }));
 
-const tabs = [
-  { id: "about", label: "About" },
-  { id: "objectives", label: "Objectives" },
-  { id: "vision", label: "Vision" },
-  { id: "mission", label: "Mission" },
-  { id: "phd", label: "Ph.D. Programme" },
-  { id: "advisors", label: "Advisors" },
-];
-
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [accentColor, setAccentColor] = useState("#1d4ed8");
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
-
-  const accentColors = [
-    "#1e40af", // blue-800
-    "#4338ca", // indigo-700
-    "#b45309", // amber-700
-    "#047857", // emerald-700
-    "#be185d", // pink-700
-    "#6d28d9", // violet-700
-  ];
 
   useEffect(() => {
-    setIsVisible(true);
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
     const slideInterval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
-
-    const colorInterval = setInterval(() => {
-      setAccentColor(accentColors[Math.floor(Math.random() * accentColors.length)]);
-    }, 3000);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      clearInterval(slideInterval);
-      clearInterval(colorInterval);
-    };
+    return () => clearInterval(slideInterval);
   }, []);
 
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isMenuOpen]);
-
-  // GSAP Animation for Mobile Menu
-  useEffect(() => {
-    if (!mobileMenuRef.current) return;
-
-    if (isMenuOpen) {
-      // Show first then animate
-      gsap.set(mobileMenuRef.current, { display: "flex" });
-      gsap.fromTo(
-        mobileMenuRef.current,
-        { y: -20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }
-      );
-    } else {
-      gsap.to(mobileMenuRef.current, {
-        y: -20,
-        opacity: 0,
-        duration: 0.3,
-        ease: "power3.in",
-        onComplete: () => {
-          gsap.set(mobileMenuRef.current, { display: "none" });
-        }
-      });
-    }
-  }, [isMenuOpen]);
-
   return (
-    <div className="relative min-h-screen bg-[#fcfdfd] font-sans overflow-hidden">
+    <section className="min-h-[100svh] bg-deep-navy grid grid-cols-1 md:grid-cols-2 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-[0.8]" 
+        style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A017' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}
+      />
 
-      {/* ─── Hero Title Section ─── */}
-      <div className="relative pt-40 md:pt-48 pb-12 px-6 text-center z-10 max-w-6xl mx-auto">
-
-        {/* Main Headings */}
-        <div className={`space-y-6 transition-all duration-1000 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
-          <div className="flex flex-col items-center">
-            <h1 className="text-3xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tight leading-snug md:leading-tight mb-8"> भारतीय ज्ञान परंपरा एवं <br className="hidden md:block" />
-              <span className="transition-colors duration-1000 ease-in-out" style={{ color: accentColor }}> समग्र शिक्षा केन्द्र</span>
-            </h1>
-
-            <div className="h-1 w-40 bg-slate-100 rounded-full mb-8" />
-            <h2 className="text-xl md:text-2xl text-slate-500 font-bold uppercase tracking-[0.2em] max-w-4xl mx-auto leading-relaxed">
-              Centre for Indian Knowledge Systems <br className="hidden md:block" />
-              <span 
-                className="transition-colors duration-1000 ease-in-out opacity-80"
-                style={{ color: accentColor }}
-              >& Holistic Education welcomes you</span>
-            </h2>
-            <p className="mt-8 text-blue-600 font-black tracking-widest uppercase text-sm animate-pulse"></p>
-            {/* SVNIT Logo Added Here */}
-            <div className="relative w-24 h-24 md:w-32 md:h-32 mb-8 animate-in fade-in zoom-in duration-1000">
-              <Image src="/logo/svnit.png" alt="SVNIT Logo" fill className="object-contain" />
-            </div>
-          </div>
+      <div className="flex flex-col justify-center px-[6vw] md:pl-[8vw] md:pr-[5vw] pt-28 pb-16 relative z-10">
+        <div className="font-jost text-[0.72rem] font-medium tracking-[0.2em] uppercase text-gold mb-6 flex items-center gap-3">
+          <span className="w-8 h-[1px] bg-gold inline-block"></span> SVNIT Surat
         </div>
-
+        
+        <p className="font-cormorant text-[clamp(2rem,4vw,3.2rem)] font-light italic text-ivory/50 leading-[1.4] mb-4">
+          भारतीय ज्ञान परंपरा एवं समग्र शिक्षा केन्द्र
+        </p>
+        
+        <h1 className="font-cormorant text-[clamp(2.4rem,5vw,4rem)] font-semibold leading-[1.15] text-[#FAF7F0] mb-7">
+          Centre for <em className="text-saffron not-italic">Indian Knowledge</em> Systems &amp; Holistic Education
+        </h1>
+        
+        <a href="#tabs-section" className="inline-flex items-center gap-2 bg-saffron text-[#FAF7F0] px-8 py-3 text-[0.8rem] font-medium tracking-[0.1em] uppercase hover:bg-[#A8401A] hover:translate-x-1 transition-all w-max after:content-['→']">
+          Explore More
+        </a>
       </div>
 
-      
-
-      {/* ─── Carousel Section (DYNAMIC PHOTOGRAPHS) ─── */}
-      <section className={`relative max-w-[95vw] 2xl:max-w-7xl mx-auto px-2 md:px-6 mb-24 transition-all duration-1000 delay-700 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"}`}>
-        <div className="relative aspect-[4/5] md:aspect-[3/2] rounded-3xl overflow-hidden bg-slate-50 shadow-2xl border border-slate-100 group">
-          {slides.map((slide, index) => (
-            <div
-              key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out
-              ${currentSlide === index ? "opacity-100" : "opacity-0"}`}
-            >
-              <Image
-                src={slide.image}
-                alt={`Slide ${slide.id}`}
-                fill
-                className="object-scale-down"
-                priority={index === 0}
-              />
-              {/* Subtle Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60" />
-            </div>
-          ))}
-
-          {/* Carousel Buttons */}
-          <button
-            onClick={() => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)}
-            className="absolute left-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-xl text-white border border-white/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all hover:bg-white hover:text-blue-900 shadow-xl z-20"
+      <div className="relative overflow-hidden h-[280px] md:h-auto">
+        <div className="absolute inset-y-0 left-0 w-[120px] z-10 bg-gradient-to-r from-deep-navy to-transparent pointer-events-none"></div>
+        {slides.map((slide, index) => (
+          <div
+            key={slide.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out
+            ${currentSlide === index ? "opacity-50" : "opacity-0"}`}
+            style={{ filter: "sepia(30%)" }}
           >
-            <span className="text-xl font-bold">←</span>
-          </button>
-          <button
-            onClick={() => setCurrentSlide((prev) => (prev + 1) % slides.length)}
-            className="absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-xl text-white border border-white/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all hover:bg-white hover:text-blue-900 shadow-xl z-20"
-          >
-            <span className="text-xl font-bold">→</span>
-          </button>
-
-
-        </div>
-      </section>
-
-      {/* Subtle Background Elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-slate-50 to-transparent rounded-bl-[100%] pointer-events-none -z-10" />
-      <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-blue-50/20 rounded-tr-[100%] pointer-events-none -z-10" />
-
-      
-
-    </div>
+            <Image
+              src={slide.image}
+              alt={`Slide ${slide.id}`}
+              fill
+              className="object-cover"
+              priority={index === 0}
+            />
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
