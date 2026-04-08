@@ -67,7 +67,10 @@ export default function Footer() {
                 <li 
                   key={link.id} 
                   className="text-[0.82rem] cursor-pointer transition-colors hover:text-[#FAF7F0] w-max" 
-                  onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onClick={() => {
+                    window.dispatchEvent(new CustomEvent('changeTab', { detail: link.id }));
+                    document.getElementById('tabs-section')?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }}
                 >
                   {link.label}
                 </li>

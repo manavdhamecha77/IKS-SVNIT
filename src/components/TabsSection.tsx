@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const phdAreas = [
   "Absolute Intelligence",
@@ -25,6 +25,15 @@ const tabs = [
 
 export default function TabsSection() {
   const [activeTab, setActiveTab] = useState("objectives");
+
+  useEffect(() => {
+    const handleTabChange = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      setActiveTab(customEvent.detail);
+    };
+    window.addEventListener('changeTab', handleTabChange);
+    return () => window.removeEventListener('changeTab', handleTabChange);
+  }, []);
 
   return (
     <>
