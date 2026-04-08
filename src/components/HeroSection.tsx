@@ -25,26 +25,36 @@ export default function HeroSection() {
         style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A017' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}
       />
 
-      <div className="flex flex-col justify-center px-[6vw] md:pl-[8vw] md:pr-[5vw] pt-28 pb-16 relative z-10">
-        <div className="font-jost text-[0.72rem] font-medium tracking-[0.2em] uppercase text-gold mb-6 flex items-center gap-3">
-          <span className="w-8 h-[1px] bg-gold inline-block"></span> SVNIT Surat
+      <div className="flex flex-col items-center md:items-start text-center md:text-left h-full px-[6vw] md:pl-[8vw] md:pr-[5vw] py-12 md:py-16 relative z-10 w-full">
+        
+        {/* Top Logo Header */}
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-4 mb-auto pb-12 animate-fade-in-up">
+          <div className="relative w-16 h-16 md:w-20 md:h-20 shrink-0">
+            <Image src="/logo/svnit.png" alt="SVNIT Logo" fill className="object-contain" />
+          </div>
+          <h2 className="text-[#FAF7F0] font-cormorant text-[1.6rem] md:text-4xl font-bold tracking-wide opacity-95 leading-snug md:mt-2 max-w-[320px] md:max-w-none">
+            Sardar Vallabhbhai National <br className="md:hidden" />Institute of Technology, Surat
+          </h2>
         </div>
-        
-        <p className="font-cormorant text-[clamp(2rem,4vw,3.2rem)] font-light italic text-ivory/50 leading-[1.4] mb-4">
-          भारतीय ज्ञान परंपरा एवं समग्र शिक्षा केन्द्र
-        </p>
-        
-        <h1 className="font-cormorant text-[clamp(2.4rem,5vw,4rem)] font-semibold leading-[1.15] text-[#FAF7F0] mb-7">
-          Centre for <em className="text-saffron not-italic">Indian Knowledge</em> Systems &amp; Holistic Education
-        </h1>
-        
-        <a href="#tabs-section" className="inline-flex items-center gap-2 bg-saffron text-[#FAF7F0] px-8 py-3 text-[0.8rem] font-medium tracking-[0.1em] uppercase hover:bg-[#A8401A] hover:translate-x-1 transition-all w-max after:content-['→']">
-          Explore More
-        </a>
+
+        <div className="mb-auto flex flex-col items-center md:items-start max-w-[360px] md:max-w-none mx-auto md:mx-0">
+          
+          <p className="font-cormorant text-[1.8rem] md:text-[clamp(2.5rem,4vw,3.2rem)] font-light italic text-ivory/50 leading-[1.3] mb-5">
+            भारतीय ज्ञान परंपरा एवं <br className="md:hidden" />समग्र शिक्षा केन्द्र
+          </p>
+          
+          <h1 className="font-cormorant text-[2.2rem] md:text-[clamp(2.8rem,5vw,4rem)] font-semibold leading-[1.15] text-[#FAF7F0] mb-8">
+            Centre for <em className="text-saffron not-italic">Indian Knowledge</em> Systems <br className="md:hidden" />&amp; Holistic Education
+          </h1>
+          
+          <a href="#about" className="inline-flex items-center justify-center gap-2 bg-saffron text-[#FAF7F0] px-8 py-3 text-[0.8rem] font-medium tracking-[0.1em] uppercase hover:bg-[#A8401A] hover:translate-x-1 transition-all w-max after:content-['→']">
+            Explore More
+          </a>
+        </div>
       </div>
 
       <div className="relative overflow-hidden h-[280px] md:h-auto">
-        <div className="absolute inset-y-0 left-0 w-[120px] z-10 bg-gradient-to-r from-deep-navy to-transparent pointer-events-none"></div>
+        <div className="absolute inset-y-0 left-0 w-[120px] z-10 bg-gradient-to-r from-deep-navy to-transparent pointer-events-none hidden md:block"></div>
         {slides.map((slide, index) => (
           <div
             key={slide.id}
