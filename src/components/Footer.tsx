@@ -39,7 +39,7 @@ export default function Footer() {
             Ancient Wisdom, <strong className="font-bold text-gold not-italic">Modern Vision</strong>
           </h2>
           <p className="text-[0.9rem] text-ivory/80 tracking-[0.1em] uppercase drop-shadow-sm font-semibold">
-            Vasudhaiv Kutumbakam — The World is One Family
+            Vasudhaiva Kutumbakam — The World is One Family
           </p>
         </div>
       </div>
