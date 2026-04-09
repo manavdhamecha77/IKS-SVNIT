@@ -101,7 +101,7 @@ export default function TabsSection() {
             <div className="max-w-[720px] md:mx-auto md:text-center bg-deep-navy p-10 sm:p-14 relative overflow-hidden">
               <span className="font-cormorant text-[14rem] leading-none font-bold text-gold/10 absolute -top-8 left-8 md:left-1/2 md:-translate-x-1/2 pointer-events-none">"</span>
               <p className="font-cormorant text-[clamp(1.1rem,2.5vw,1.5rem)] font-light italic leading-[1.8] text-ivory/90 relative z-10">
-                To establish <strong className="text-gold not-italic font-semibold">SVNIT Surat</strong> as a frontier leader in disseminating Indian Knowledge Systems for Holistic Education with the aspiration of harmony with existence and the feeling of <strong className="text-gold not-italic font-semibold">Vasudhaiva Kutumbakam</strong>.
+                To establish <strong className="text-gold not-italic font-semibold">SVNIT Surat</strong> as a frontier leader in disseminating Indian Knowledge Systems for Holistic Education with the aspiration of harmony with existence and the feeling of <strong className="text-gold not-italic font-semibold"> Vasudhaiva Kutumbakam</strong>.
               </p>
             </div>
           )}
