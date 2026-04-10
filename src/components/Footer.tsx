@@ -38,8 +38,8 @@ export default function Footer() {
           <h2 className="font-cormorant text-[clamp(1.8rem,4vw,3rem)] font-light italic text-[#FAF7F0] leading-[1.4] mb-2 border-none drop-shadow-md">
             Ancient Wisdom, <strong className="font-bold text-gold not-italic">Modern Vision</strong>
           </h2>
-          <p className="text-[0.9rem] text-ivory/80 tracking-[0.1em] uppercase drop-shadow-sm font-semibold">
-            Vasudhaiva Kutumbakam — The World is One Family
+          <p className="text-[0.9rem] text-ivory/80 tracking-[0.1em] drop-shadow-sm font-semibold flex items-center justify-center gap-2">
+            <span className="normal-case text-[1.3rem] tracking-wider text-gold/90 mt-1" style={{ fontFamily: "'Samarkan', sans-serif" }}>Vasudhaiva Kutumbakam</span> <span className="font-sans font-medium opacity-80 uppercase">— One World Family</span>
           </p>
         </div>
       </div>

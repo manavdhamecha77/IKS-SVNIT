@@ -31,6 +31,9 @@ export default function RootLayout({
       lang="en"
       className={`${cormorant.variable} ${jost.variable} h-full antialiased`}
     >
+      <head>
+        <link href="https://fonts.cdnfonts.com/css/samarkan" rel="stylesheet" />
+      </head>
       <body className="min-h-full flex flex-col">
         {children}
       </body>
