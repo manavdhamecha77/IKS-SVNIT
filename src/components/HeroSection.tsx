@@ -39,13 +39,13 @@ export default function HeroSection() {
 
         <div className="mb-auto flex flex-col items-center md:items-start max-w-[360px] md:max-w-none mx-auto md:mx-0">
           
-          <p className="font-cormorant text-[1.8rem] md:text-[clamp(2.5rem,4vw,3.2rem)] font-light italic text-ivory/50 leading-[1.3] mb-5">
+          <h1 className="font-cormorant text-[2.2rem] md:text-[clamp(2.8rem,5vw,4rem)] font-semibold leading-[1.15] text-[#FAF7F0] mb-5">
             भारतीय ज्ञान परंपरा एवं <br className="md:hidden" />समग्र शिक्षा केन्द्र
-          </p>
-          
-          <h1 className="font-cormorant text-[2.2rem] md:text-[clamp(2.8rem,5vw,4rem)] font-semibold leading-[1.15] text-[#FAF7F0] mb-8">
-            Centre for <em className="text-saffron not-italic">Indian Knowledge</em> Systems <br className="md:hidden" />&amp; Holistic Education
           </h1>
+          
+          <p className="font-cormorant text-[1.6rem] md:text-[clamp(1.8rem,3vw,2.5rem)] font-light italic text-ivory/90 leading-[1.4] mb-8">
+            Centre for <em className="text-saffron not-italic">Indian Knowledge</em> Systems <br className="md:hidden" />&amp; Holistic Education <span className="text-saffron/80">welcomes you</span>
+          </p>
           
           <a href="#about" className="inline-flex items-center justify-center gap-2 bg-saffron text-[#FAF7F0] px-8 py-3 text-[0.8rem] font-medium tracking-[0.1em] uppercase hover:bg-[#A8401A] hover:translate-x-1 transition-all w-max after:content-['→']">
             Explore More

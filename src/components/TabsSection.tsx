@@ -109,16 +109,16 @@ export default function TabsSection() {
           {/* MISSION */}
           {activeTab === "mission" && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-              <div>
+              {/* <div>
                 <h3 className="font-cormorant text-[1.8rem] font-semibold text-deep-navy mb-5 leading-[1.3]">Facilitating the Journey from Head to Heart</h3>
                 <p className="text-[0.95rem] leading-[1.8] text-text-mid mb-4">
                   Disseminating the profound ancient indigenous wisdom and integrating them into modern education for holistic advancement.
                 </p>
-              </div>
+              </div> */}
               <div className="bg-saffron text-[#FAF7F0] p-8 relative">
                 <span className="text-[4rem] leading-none opacity-15 absolute bottom-4 right-4">☀</span>
                 <p className="font-cormorant text-[1.2rem] italic leading-[1.7]">
-                  "Integrating profound ancient indigenous wisdom with modern education for complete human advancement in harmony with the cosmos."
+                  Facilitating the journey from head to heart by disseminating the profound ancient indigenous wisdom  for integrating them to the modern education for holistic advancement.
                 </p>
               </div>
             </div>
