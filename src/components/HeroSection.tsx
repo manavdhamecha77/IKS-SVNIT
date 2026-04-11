@@ -2,20 +2,42 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-const slides = Array.from({ length: 41 }, (_, i) => ({
-  id: i + 1,
-  image: `/images/image${i + 1}.png`,
+const mobileSlides = Array.from({ length: 24 }, (_, i) => ({
+  id: i,
+  image: `/images/mobile/image${i}.png`,
+}));
+
+const desktopSlides = Array.from({ length: 11 }, (_, i) => ({
+  id: i,
+  image: `/images/desktop/image${i}.png`,
 }));
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  const slides = isMobile ? mobileSlides : desktopSlides;
 
   useEffect(() => {
     const slideInterval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(slideInterval);
+  }, [slides.length]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const updateIsMobile = () => setIsMobile(mediaQuery.matches);
+
+    updateIsMobile();
+    mediaQuery.addEventListener("change", updateIsMobile);
+
+    return () => mediaQuery.removeEventListener("change", updateIsMobile);
   }, []);
+
+  useEffect(() => {
+    setCurrentSlide(0);
+  }, [isMobile]);
 
   return (
     <section className="min-h-[100svh] bg-deep-navy grid grid-cols-1 md:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] relative overflow-hidden">
@@ -58,13 +80,12 @@ export default function HeroSection() {
       </div>
 
       <div className="relative overflow-hidden h-[280px] md:h-auto">
-        <div className="absolute inset-y-0 left-0 w-[120px] z-10 bg-gradient-to-r from-deep-navy to-transparent pointer-events-none hidden md:block"></div>
+        <div className="absolute inset-y-0 left-0 w-[56px] z-10 bg-gradient-to-r from-deep-navy/95 to-transparent pointer-events-none hidden md:block"></div>
         {slides.map((slide, index) => (
           <div
             key={slide.id}
             className={`absolute inset-0 transition-opacity duration-1000 ease-in-out
             ${currentSlide === index ? "opacity-50" : "opacity-0"}`}
-            style={{ filter: "sepia(30%)" }}
           >
             <Image
               src={slide.image}
