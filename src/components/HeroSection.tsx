@@ -65,8 +65,9 @@ export default function HeroSection() {
             भारतीय ज्ञान परंपरा एवं <br className="md:hidden" />समग्र शिक्षा केन्द्र
           </h1>
 
-          <p className="font-cormorant text-[1.6rem] md:text-[clamp(1.8rem,3vw,2.5rem)] font-light italic text-ivory/90 leading-[1.4] mb-8">
-            Centre for <em className="text-saffron not-italic">Indian Knowledge</em> Systems <br className="md:hidden" />&amp; Holistic Education <span className="text-saffron/80">welcomes you</span>
+          <p className="font-cormorant text-[1.25rem] sm:text-[1.5rem] md:text-[clamp(1.8rem,3vw,2.5rem)] font-light italic text-[#FAF7F0]/90 leading-[1.4] mb-8">
+            Centre for <span className="text-saffron not-italic">Indian Knowledge Systems</span> <br className="md:hidden" />
+            <span className="text-saffron not-italic">&amp; Holistic Education</span> welcomes you
           </p>
 
           <p className="mb-8 w-full max-w-full whitespace-normal md:whitespace-nowrap text-center font-cormorant text-[clamp(0.85rem,1.15vw,1.2rem)] font-semibold uppercase tracking-[0.12em] sm:tracking-[0.16em] leading-[1.4] text-transparent bg-clip-text bg-[length:300%_300%] animate-gradient-shift drop-shadow-[0_2px_10px_rgba(12,27,58,0.35)] break-words">
