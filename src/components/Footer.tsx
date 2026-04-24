@@ -35,11 +35,15 @@ export default function Footer() {
         <div className="absolute inset-0 bg-deep-navy/60 z-10" />
 
         <div className="relative z-20 text-center px-8">
-          <h2 className="font-cormorant text-[clamp(1.8rem,4vw,3rem)] font-light italic text-[#FAF7F0] leading-[1.4] mb-2 border-none drop-shadow-md">
-            Ancient Wisdom, <strong className="font-bold text-gold not-italic">Modern Vision</strong>
+          <h2 className="font-cormorant text-[2.75rem] sm:text-[clamp(3.3rem,4vw,5.2rem)] font-light italic text-[#FAF7F0] leading-[1.02] mb-3 border-none drop-shadow-md">
+            Ancient Wisdom,<br />
+            <strong className="font-bold text-gold not-italic">Modern Vision</strong>
           </h2>
-          <p className="text-[0.9rem] text-ivory/80 tracking-[0.1em] drop-shadow-sm font-semibold flex items-center justify-center gap-2">
-            <span className="normal-case text-[1.3rem] tracking-wider text-gold/90 mt-1" style={{ fontFamily: "'Samarkan', sans-serif" }}>Vasudhaiva Kutumbakam</span> <span className="font-sans font-medium opacity-80 uppercase">— One World Family</span>
+          <p className="text-[1.1rem] sm:text-[1.2rem] text-ivory/80 tracking-[0.1em] drop-shadow-sm font-semibold flex flex-col items-center justify-center gap-1">
+            <span className="normal-case text-[0.95rem] sm:text-[1.15rem] tracking-wider text-gold/90 mt-1" style={{ fontFamily: "'Samarkan', sans-serif" }}>
+              Vasudhaiva Kutumbakam
+            </span>
+            <span className="font-sans font-medium opacity-80 uppercase text-[0.65rem] sm:text-[0.8rem]">— One World Family</span>
           </p>
         </div>
       </div>
@@ -48,8 +52,8 @@ export default function Footer() {
       <footer id="contact" className="bg-[#080F1F] text-[#FAF7F0]/55 px-[8vw] pt-12 pb-8">
         <div className="grid grid-cols-2 md:grid-cols-[2.5fr_1fr_1fr] gap-x-6 gap-y-10 md:gap-12 pb-10 border-b border-white/5">
           <div className="col-span-2 md:col-span-1 flex flex-col items-center text-center">
-            <div className="relative w-16 h-16 md:w-20 md:h-20 mb-5">
-              <Image src="/logo/svnit.png" alt="SVNIT Logo" fill className="object-contain" />
+            <div className="relative w-40 h-40 md:w-56 md:h-56 mb-5">
+              <Image src="/logo/logo.png" alt="SVNIT Logo" fill className="object-contain" />
             </div>
             <h3 className="font-cormorant text-[1.4rem] font-semibold text-[#FAF7F0] mb-3 leading-snug">
               Centre for Indian Knowledge Systems<br />
