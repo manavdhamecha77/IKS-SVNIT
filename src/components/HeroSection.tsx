@@ -14,7 +14,7 @@ const desktopSlides = Array.from({ length: 11 }, (_, i) => ({
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile,     setIsMobile] = useState(false);
 
   const slides = isMobile ? mobileSlides : desktopSlides;
 
@@ -40,14 +40,14 @@ export default function HeroSection() {
   }, [isMobile]);
 
   return (
-    <section className="min-h-[100svh] bg-deep-navy grid grid-cols-1 md:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] relative overflow-hidden">
+    <section className="min-h-[100svh] bg-deep-navy grid grid-cols-1 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] relative overflow-hidden">
       {/* Background Pattern */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.8]"
         style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A017' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}
       />
 
-      <div className="flex flex-col items-center justify-center md:items-center md:justify-center text-center h-full px-[6vw] md:px-[6vw] py-12 md:py-16 relative z-10 w-full min-w-0 overflow-hidden">
+      <div className="order-2 md:order-1 flex flex-col items-center justify-center md:items-start md:justify-center text-center md:text-left h-full px-[6vw] md:px-[5vw] py-12 md:py-16 relative z-10 w-full min-w-0 overflow-hidden">
 
         {/* Top Logo Header */}
         <div className="flex flex-col md:flex-row items-center md:items-start gap-4 mb-auto pb-12 animate-fade-in-up">
@@ -74,29 +74,31 @@ export default function HeroSection() {
             BHARATIYA KNOWLEDGE SYSTEMS AND HOLISTIC EDUCATION
           </p>
 
-          <a href="#about" className="inline-flex self-center items-center justify-center gap-2 bg-saffron text-[#FAF7F0] px-8 py-3 text-[0.8rem] font-medium tracking-[0.1em] uppercase hover:bg-[#A8401A] hover:translate-x-1 transition-all w-max after:content-['→']">
+          <a href="#about" className="inline-flex self-center md:self-start items-center justify-center gap-2 bg-saffron text-[#FAF7F0] px-8 py-3 text-[0.8rem] font-medium tracking-[0.1em] uppercase hover:bg-[#A8401A] hover:translate-x-1 transition-all w-max after:content-['→']">
             Explore More
           </a>
         </div>
       </div>
 
-      <div className="relative overflow-hidden h-[280px] md:h-auto">
-        <div className="absolute inset-y-0 left-0 w-[56px] z-10 bg-gradient-to-r from-deep-navy/95 to-transparent pointer-events-none hidden md:block"></div>
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out
-            ${currentSlide === index ? "opacity-50" : "opacity-0"}`}
-          >
-            <Image
-              src={slide.image}
-              alt={`Slide ${slide.id}`}
-              fill
-              className="object-cover"
-              priority={index === 0}
-            />
-          </div>
-        ))}
+      <div className="order-1 md:order-2 relative overflow-hidden h-[320px] md:h-full md:min-h-[100svh] px-4 sm:px-6 md:px-8 lg:px-12 py-4 md:py-8">
+        <div className="relative h-full w-full overflow-hidden rounded-[2rem] border border-white/10 shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
+          {slides.map((slide, index) => (
+            <div
+              key={slide.id}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                currentSlide === index ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <Image
+                src={slide.image}
+                alt={`Slide ${slide.id}`}
+                fill
+                className="object-cover"
+                priority={index === 0}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

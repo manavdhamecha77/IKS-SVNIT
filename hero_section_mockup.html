@@ -1,0 +1,295 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+  :root {
+    --deep-navy: #0C1B3A;
+    --saffron: #C8511A;
+    --cream: #FAF7F0;
+    --gold: #D4A017;
+  }
+  .hero {
+    background: var(--deep-navy);
+    min-height: 520px;
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    border-radius: 10px;
+  }
+  .bg-pattern {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.8;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A017' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .content-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 36px 40px 36px 44px;
+    position: relative;
+    z-index: 10;
+    gap: 24px;
+  }
+  .logo-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding-bottom: 4px;
+    border-bottom: 0.5px solid rgba(212,160,23,0.2);
+    padding-bottom: 20px;
+  }
+  .logo-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(212,160,23,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: rgba(212,160,23,0.08);
+  }
+  .logo-circle span {
+    font-size: 15px;
+    font-weight: 600;
+    color: #D4A017;
+    letter-spacing: 0.02em;
+  }
+  .logo-text {
+    color: var(--cream);
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.35;
+    opacity: 0.95;
+    letter-spacing: 0.01em;
+    padding-top: 4px;
+  }
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+  }
+  .tag-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .tag-line::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1.5px;
+    background: var(--saffron);
+  }
+  .tag-line span {
+    font-size: 0.7rem;
+    font-family: -apple-system, sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--saffron);
+    opacity: 0.9;
+  }
+  h1 {
+    color: var(--cream);
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.18;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(250,247,240,0.85);
+    line-height: 1.45;
+    margin: 0;
+  }
+  .subtitle .highlight {
+    color: var(--saffron);
+    font-style: normal;
+    font-weight: 400;
+  }
+  .divider-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .divider-row::before,
+  .divider-row::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: linear-gradient(to right, transparent, rgba(212,160,23,0.35), transparent);
+  }
+  .divider-text {
+    font-size: 0.62rem;
+    font-family: -apple-system, sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: rgba(212,160,23,0.6);
+    white-space: nowrap;
+  }
+  .cta-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 4px;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--saffron);
+    color: var(--cream);
+    padding: 10px 24px;
+    font-family: -apple-system, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  .cta-btn:hover { background: #A8401A; }
+  .cta-arrow {
+    font-size: 1rem;
+    line-height: 1;
+  }
+  .image-col {
+    position: relative;
+    overflow: hidden;
+    min-height: 380px;
+  }
+  .image-fade-left {
+    position: absolute;
+    inset-y: 0;
+    left: 0;
+    width: 60px;
+    z-index: 10;
+    background: linear-gradient(to right, rgba(12,27,58,0.95), transparent);
+  }
+  .slide-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .slide-dots {
+    display: flex;
+    gap: 6px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+  }
+  .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(250,247,240,0.3);
+  }
+  .dot.active {
+    background: var(--saffron);
+    width: 18px;
+    border-radius: 3px;
+  }
+  /* Decorative image grid pattern */
+  .img-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(212,160,23,0.3) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(212,160,23,0.3) 40px);
+  }
+  .img-label {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: -apple-system, sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(250,247,240,0.3);
+    border: 0.5px solid rgba(250,247,240,0.15);
+    padding: 4px 8px;
+    border-radius: 2px;
+  }
+  .corner-accent {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+  }
+  .corner-accent.tl { top: 16px; left: 16px; border-top: 1.5px solid rgba(212,160,23,0.4); border-left: 1.5px solid rgba(212,160,23,0.4); }
+  .corner-accent.br { bottom: 16px; right: 16px; border-bottom: 1.5px solid rgba(212,160,23,0.4); border-right: 1.5px solid rgba(212,160,23,0.4); }
+</style>
+
+<div class="hero">
+  <div class="bg-pattern"></div>
+
+  <!-- Left content -->
+  <div class="content-col">
+
+    <!-- Logo header -->
+    <div class="logo-block">
+      <div class="logo-circle"><span>SV</span></div>
+      <div class="logo-text">Sardar Vallabhbhai National<br>Institute of Technology, Surat</div>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+      <div class="tag-line"><span>Est. 1961 · SVNIT Surat</span></div>
+
+      <h1>भारतीय ज्ञान परंपरा<br>एवं समग्र शिक्षा केन्द्र</h1>
+
+      <p class="subtitle">
+        Centre for <span class="highlight">Indian Knowledge Systems</span>
+        &amp; <span class="highlight">Holistic Education</span> welcomes you
+      </p>
+
+      <div class="divider-row">
+        <span class="divider-text">Bharatiya Knowledge Systems and Holistic Education</span>
+      </div>
+
+      <div class="cta-row">
+        <a href="#about" class="cta-btn">Explore More <span class="cta-arrow">→</span></a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Right image column -->
+  <div class="image-col">
+    <div class="image-fade-left"></div>
+    <div class="img-grid"></div>
+    <div class="img-label">Image Slideshow</div>
+    <div class="corner-accent tl"></div>
+    <div class="corner-accent br"></div>
+    <!-- Slide indicator dots -->
+    <div class="slide-dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <!-- Visual indicator text -->
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;opacity:0.18">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="4" y="8" width="40" height="32" rx="4" stroke="#FAF7F0" stroke-width="1.5"/><circle cx="16" cy="20" r="4" stroke="#FAF7F0" stroke-width="1.5"/><path d="M4 36l10-10 8 8 6-6 6 8" stroke="#FAF7F0" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <span style="font-family:-apple-system,sans-serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#FAF7F0">Slideshow area</span>
+    </div>
+  </div>
+</div>
